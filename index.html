@@ -134,6 +134,7 @@
         </div>
     </header>
 
+    <!-- Mobile Tabs (Visible only on small screens) -->
     <div class="lg:hidden sticky top-[69px] z-20 bg-slate-50/95 dark:bg-slate-950/95 border-b border-slate-200 dark:border-slate-900 py-3 px-4 shadow-sm backdrop-blur-md transition-colors duration-300">
         <div class="flex p-1 bg-slate-200 dark:bg-slate-900 rounded-xl max-w-md mx-auto">
             <button onclick="setMobileTab('checklist')" id="tab-btn-checklist" class="flex-1 py-2.5 text-center text-xs font-extrabold rounded-lg transition-all duration-200 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs">
@@ -145,102 +146,56 @@
         </div>
     </div>
 
+    <!-- Main Container Grid -->
     <main class="max-w-5xl mx-auto px-4 mt-6 lg:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         <!-- Checklist Column (Left/Center - span 2) -->
         <div id="column-checklist" class="lg:col-span-2 space-y-6">
             
+            <!-- Form to Add Custom Item -->
             <div id="add-item-card-wrapper" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm relative overflow-hidden transition-colors duration-300">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-brand-500/10 rounded-full blur-2xl"></div>
                 
-                <div class="flex items-center justify-between flex-wrap gap-2 mb-3 relative z-10">
-                    <h3 id="add-item-title" class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-2 text-sm uppercase tracking-wider">
-                        <i class="fa-solid fa-circle-plus text-brand-500 text-lg"></i>
-                        <span>Tambah Barang Peribadi</span>
-                    </h3>
-                    <!-- Toggle Dynamic Settings Button -->
-                    <button onclick="toggleGroupCreator()" class="text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center gap-1 transition-colors px-2 py-1 rounded-lg bg-brand-50 dark:bg-brand-950/40 border border-brand-100 dark:border-brand-900/40">
-                        <i class="fa-solid fa-sliders"></i>
-                        <span id="manager-toggle-btn">⚙️ Urus Kategori & Beg</span>
-                    </button>
-                </div>
+                <h3 id="add-item-title" class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-2 text-sm uppercase tracking-wider mb-2">
+                    <i class="fa-solid fa-circle-plus text-brand-500 text-lg"></i>
+                    <span>Tambah Barang Peribadi</span>
+                </h3>
                 <p id="add-item-desc" class="text-xs text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
                     Sistem akan memasukkan barang tersendiri anda ke dalam senarai interaktif di bawah secara automatik mengikut lokasi isian beg pilihan anda.
                 </p>
-
-                <!-- COLLAPSIBLE GROUP/BAG CREATOR PANEL -->
-                <div id="group-creator-panel" class="hidden mb-5 p-4 bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800/80 rounded-xl relative z-10 space-y-4 transition-all duration-300">
-                    <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
-                        <span id="manager-panel-title" class="text-xs font-extrabold uppercase tracking-wide text-brand-600 dark:text-brand-400">⚙️ Pengurus Kategori & Beg Baru</span>
-                        <button onclick="toggleGroupCreator()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 text-sm"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <!-- Group Type Selector -->
-                        <div>
-                            <label id="lbl-group-type" class="block text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Sesuatu Yang Ditambah Adalah:</label>
-                            <select id="new-group-type" onchange="updateGroupColorPreview()" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                                <option value="category">📁 Kategori Baru (Category)</option>
-                                <option value="location">🧳 Lokasi Beg Baru (Bag Location)</option>
-                            </select>
-                        </div>
-                        <!-- Group Color Palette Selector -->
-                        <div>
-                            <label id="lbl-group-color" class="block text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Tema Warna Visual:</label>
-                            <select id="new-group-color" onchange="updateGroupColorPreview()" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                                <option value="blue">🔵 Sky Blue</option>
-                                <option value="purple">🟣 Royal Purple</option>
-                                <option value="emerald">🟢 Emerald Green</option>
-                                <option value="rose">🔴 Rose Pink</option>
-                                <option value="amber">🟡 Amber Yellow</option>
-                                <option value="indigo">🌌 Deep Indigo</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <!-- Name BM -->
-                        <div>
-                            <label id="lbl-group-name-bm" class="block text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Nama (Bahasa Melayu):</label>
-                            <input type="text" id="new-group-name-bm" placeholder="Contoh: Alatan Mekanik, Beg Kalis Air" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                        </div>
-                        <!-- Name EN -->
-                        <div>
-                            <label id="lbl-group-name-en" class="block text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Name (English):</label>
-                            <input type="text" id="new-group-name-en" placeholder="Example: Mechanic Tools, Waterproof Bag" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between pt-1 gap-2">
-                        <!-- Dynamic Badge Preview -->
-                        <div class="text-xs">
-                            <span id="lbl-preview-tag" class="text-[10px] text-slate-400 block mb-0.5 font-bold uppercase">Prebiu Warna:</span>
-                            <span id="group-color-preview-badge" class="px-3 py-1 text-[10px] font-extrabold rounded-lg border uppercase tracking-wider bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 border-sky-100 dark:border-sky-900/40">🔵 Sky Blue</span>
-                        </div>
-                        <button onclick="createNewGroup()" id="btn-save-group" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-xs font-bold transition-all shadow-md flex items-center gap-1.5">
-                            <i class="fa-solid fa-floppy-disk"></i> <span>Simpan Kumpulan</span>
-                        </button>
-                    </div>
-                </div>
                 
-                <!-- ADD ITEM SUBMISSION FORM -->
                 <div class="space-y-3 relative z-10">
                     <div>
                         <label id="input-label-name" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Nama Barang Kustom</label>
                         <input type="text" id="custom-item-name" placeholder="Contoh: Seterika, Botol Tambahan, Ubat Alahan" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-500 transition-all">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Category Selection & Inline Creation Input -->
                         <div>
                             <label id="input-label-cat" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Kategori Utama</label>
-                            <select id="custom-item-category" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-500 transition-all">
+                            <select id="custom-item-category" onchange="handleCategorySelectionChange()" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-500 transition-all">
                                 <!-- Dynamic Options loaded via JS -->
                             </select>
+                            
+                            <!-- Inline Custom Category Text Input -->
+                            <div id="new-cat-input-container" class="hidden mt-2 animate-fadeIn">
+                                <label id="lbl-new-cat-name" class="block text-[10px] font-bold text-brand-500 uppercase tracking-wider mb-1">Nama Kategori Kustom Baru:</label>
+                                <input type="text" id="new-cat-name-input" placeholder="Contoh: Kosmetik / Cosmetics" class="w-full px-3 py-2 bg-brand-50/50 dark:bg-brand-950/30 border border-brand-200 dark:border-brand-800 rounded-lg text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            </div>
                         </div>
+
+                        <!-- Location Selection & Inline Creation Input -->
                         <div>
                             <label id="input-label-loc" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Lokasi Isian Beg (Ikut Kaedah Packing)</label>
-                            <select id="custom-item-location" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-500 transition-all">
+                            <select id="custom-item-location" onchange="handleLocationSelectionChange()" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-500 transition-all">
                                 <!-- Dynamic Options loaded via JS -->
                             </select>
+
+                            <!-- Inline Custom Location Text Input -->
+                            <div id="new-loc-input-container" class="hidden mt-2 animate-fadeIn">
+                                <label id="lbl-new-loc-name" class="block text-[10px] font-bold text-brand-500 uppercase tracking-wider mb-1">Nama Beg Kustom Baru:</label>
+                                <input type="text" id="new-loc-name-input" placeholder="Contoh: Beg Ziploc / Ziploc Bag" class="w-full px-3 py-2 bg-brand-50/50 dark:bg-brand-950/30 border border-brand-200 dark:border-brand-800 rounded-lg text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            </div>
                         </div>
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
@@ -264,6 +219,7 @@
                 </div>
             </div>
 
+            <!-- Controls for Sorting & Filters -->
             <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm space-y-4 transition-colors duration-300">
                 
                 <!-- View Mode Selector -->
@@ -296,6 +252,7 @@
                 </div>
             </div>
 
+            <!-- Main Items Container -->
             <div id="checklist-container" class="space-y-6">
                 <!-- Javascript will inject categories/locations and checklist items dynamically here -->
             </div>
@@ -311,7 +268,7 @@
 
     </main>
 
-    <!-- Floating Toast Message (Persistent) -->
+    <!-- Floating Toast Message -->
     <div id="toast" class="hidden fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl z-50 flex items-center space-x-3 transition-all duration-300">
         <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400"></i>
         <span id="toast-message" class="text-sm font-medium">Sistem dikemaskini!</span>
@@ -360,19 +317,17 @@
                 status_msg_high: "Sikit lagi! Dah nak siap sepenuhnya! 🎒",
                 status_msg_full: "Semua siap dibungkus! Selamat melangkah ke Universiti/Kolej! 🎉",
                 
-                // Urus Kategori & Beg
-                mngr_toggle_open: "⚙️ Urus Kategori & Beg",
-                mngr_toggle_close: "❌ Tutup Pengurus",
-                mngr_panel_title: "⚙️ Pengurus Kategori & Beg Baru",
-                mngr_lbl_type: "Sesuatu Yang Ditambah Adalah:",
-                mngr_lbl_color: "Tema Warna Visual:",
-                mngr_lbl_name_bm: "Nama (Bahasa Melayu):",
-                mngr_lbl_name_en: "Name (English):",
-                mngr_btn_save: "Simpan Kumpulan",
-                mngr_preview_title: "Prebiu Warna:",
-                mngr_success_cat: "Kategori baharu berjaya disimpan!",
-                mngr_success_loc: "Lokasi Beg baharu berjaya disimpan!",
-                mngr_err_empty: "Sila isi kedua-dua nama dalam BM dan EN!"
+                // Inline Manager Placeholders & Labels
+                dropdown_create_cat_label: "✨ + Cipta Kategori Baru...",
+                dropdown_create_loc_label: "✨ + Cipta Lokasi Beg Baru...",
+                lbl_new_cat_name: "Nama Kategori Kustom Baru:",
+                lbl_new_loc_name: "Nama Beg Kustom Baru:",
+                new_cat_placeholder: "Contoh: Alatan Mekanik, Alatan Sukan",
+                new_loc_placeholder: "Contoh: Beg Ziploc, Beg Sisi",
+                toast_err_new_cat_empty: "Sila isi nama kategori kustom baharu anda!",
+                toast_err_new_loc_empty: "Sila isi nama lokasi beg kustom baharu anda!",
+                toast_success_cat_created: "Kategori baharu berjaya dicipta!",
+                toast_success_loc_created: "Lokasi beg baharu berjaya dicipta!"
             },
             en: {
                 brand_subtitle: "UNIVERSAL UNI & COLLEGE CHECKLIST",
@@ -414,23 +369,20 @@
                 status_msg_high: "Almost there! Almost fully packed! 🎒",
                 status_msg_full: "All packed! Have a great journey to Uni/College! 🎉",
                 
-                // Urus Kategori & Beg
-                mngr_toggle_open: "⚙️ Manage Cats & Bags",
-                mngr_toggle_close: "❌ Close Manager",
-                mngr_panel_title: "⚙️ Custom Category & Bag Manager",
-                mngr_lbl_type: "The Added Element Is:",
-                mngr_lbl_color: "Visual Color Theme:",
-                mngr_lbl_name_bm: "Name (Malay Language):",
-                mngr_lbl_name_en: "Name (English):",
-                mngr_btn_save: "Save Group",
-                mngr_preview_title: "Color Preview:",
-                mngr_success_cat: "New category successfully saved!",
-                mngr_success_loc: "New Bag Location successfully saved!",
-                mngr_err_empty: "Please fill in names for both BM and EN!"
+                // Inline Manager Placeholders & Labels
+                dropdown_create_cat_label: "✨ + Create New Category...",
+                dropdown_create_loc_label: "✨ + Create New Bag Location...",
+                lbl_new_cat_name: "New Custom Category Name:",
+                lbl_new_loc_name: "New Custom Bag Name:",
+                new_cat_placeholder: "Example: Mechanics Tools, Sports Gear",
+                new_loc_placeholder: "Example: Ziploc Bag, Side Backpack",
+                toast_err_new_cat_empty: "Please enter your custom category name!",
+                toast_err_new_loc_empty: "Please enter your custom bag location name!",
+                toast_success_cat_created: "New category successfully created!",
+                toast_success_loc_created: "New bag location successfully created!"
             }
         };
 
-        // Complete database with BM and EN translations
         const defaultChecklist = [
             // DOKUMEN / BEG DAFTAR
             { 
@@ -521,17 +473,6 @@
                 desc_bm: "Menghimpunkan semua dokumen penting di atas dalam satu tempat supaya tidak basah.",
                 desc_en: "Gathers all vital documents in one place to prevent them from getting wet or folded."
             },
-            { 
-                id: "gdoc-9", 
-                category: "dokumen", 
-                packingLocation: "beg_daftar", 
-                name_bm: "Slip Bukti Pembayaran Yuran Pendaftaran", 
-                name_en: "Registration Fees Payment Receipt Slip",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Bawa bukti resit pembayaran yuran yang telah disahkan pihak bank atau transaksi atas talian.",
-                desc_en: "Bring proof of fee payment certified by the bank or online transaction invoice."
-            },
 
             // PAKAIAN / LUGGAGE
             { 
@@ -582,8 +523,8 @@
                 id: "gpak-5", 
                 category: "pakaian", 
                 packingLocation: "luggage", 
-                name_bm: "Pakaian & Alatan Sembahyang (Sejadah/Kain Pelikat/Telekung/Kitab)", 
-                name_en: "Prayer Clothes & Items (Sejadah/Pelikat/Telekung/Holy Books)",
+                name_bm: "Pakaian & Alatan Sembahyang (Sejadah/Telekung)", 
+                name_en: "Prayer Clothes & Items (Sejadah/Telekung)",
                 checked: false, 
                 tag: "Wajib", 
                 desc_bm: "Bawa sekurang-kurangnya 1-2 pasang untuk kegunaan ibadat harian.",
@@ -622,28 +563,6 @@
                 desc_bm: "Rujukan rohani harian mengikut kepercayaan masing-masing.",
                 desc_en: "Daily spiritual reference according to individual beliefs."
             },
-            { 
-                id: "gpak-9", 
-                category: "pakaian", 
-                packingLocation: "luggage", 
-                name_bm: "Pakaian Tidur Selesa", 
-                name_en: "Comfortable Sleepwear",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Sediakan 3-4 helai pakaian tidur kasual yang selesa.",
-                desc_en: "Prepare 3-4 comfortable casual sleeping clothes."
-            },
-            { 
-                id: "gpak-10", 
-                category: "pakaian", 
-                packingLocation: "luggage", 
-                name_bm: "Cardigan / Jaket / Hoodie", 
-                name_en: "Cardigan / Jacket / Hoodie",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Melindungi diri daripada hawa dingin di perpustakaan atau dewan kuliah.",
-                desc_en: "Protects you from cold drafts in libraries or air-conditioned lecture halls."
-            },
 
             // PERALATAN BELAJAR & GAJET
             { 
@@ -676,41 +595,8 @@
                 name_en: "Complete Basic Stationery Set",
                 checked: false, 
                 tag: "Wajib", 
-                desc_bm: "Pen merah/biru/hitam, pensel mekanikal, pemadam, pembaris, pengorek.",
-                desc_en: "Red/blue/black pens, mechanical pencil, eraser, ruler, sharpener."
-            },
-            { 
-                id: "ggad-4", 
-                category: "gadget", 
-                packingLocation: "beg_kelas", 
-                name_bm: "Kalkulator Saintifik", 
-                name_en: "Scientific Calculator",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Sangat penting bagi kelas yang memerlukan pengiraan numerikal.",
-                desc_en: "Crucial for classes requiring numerical calculations."
-            },
-            { 
-                id: "ggad-5", 
-                category: "gadget", 
-                packingLocation: "beg_kelas", 
-                name_bm: "Powerbank & Pengecas Telefon Pintar", 
-                name_en: "Powerbank & Smartphone Charger",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Untuk mengecas peranti mudah alih sekiranya tiada plug berdekatan.",
-                desc_en: "To charge mobile devices when no plug is nearby."
-            },
-            { 
-                id: "ggad-6", 
-                category: "gadget", 
-                packingLocation: "beg_kelas", 
-                name_bm: "Payung Lipat Ringan (Pocket Umbrella)", 
-                name_en: "Lightweight Folding Umbrella",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Pelindung daripada panas terik atau hujan lebat semasa berjalan kaki ke kelas.",
-                desc_en: "Protects you from scorching sun or heavy rain when walking to class."
+                desc_bm: "Pen merah/biru/hitam, pensel mekanikal, pemadam, pembaris.",
+                desc_en: "Red/blue/black pens, mechanical pencil, eraser, ruler."
             },
 
             // DORM & TIDUR
@@ -747,39 +633,6 @@
                 desc_bm: "Gunakan jenis kunci kukuh untuk memastikan loker pakaian selamat dikunci.",
                 desc_en: "Use a sturdy lock to keep your clothing locker securely locked."
             },
-            { 
-                id: "gdorm-4", 
-                category: "dorm", 
-                packingLocation: "guni", 
-                name_bm: "Kain Buruk / Wet Wipes / Tisu Basah", 
-                name_en: "Rags / Wet Wipes / Tissues",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Untuk proses pembersihan meja dan katil yang berhabuk tebal pada hari kemasukan.",
-                desc_en: "For cleaning dusty tables and beds on moving-in day."
-            },
-            { 
-                id: "gdorm-5", 
-                category: "dorm", 
-                packingLocation: "guni", 
-                name_bm: "Penyangkut Baju (Hanger) & Sepit Baju", 
-                name_en: "Clothes Hangers & Pegs",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Sediakan sekurang-kurangnya 1-2 dozen hanger untuk mengeringkan pakaian basah.",
-                desc_en: "Prepare at least 1-2 dozen hangers to dry wet clothes."
-            },
-            { 
-                id: "gdorm-6", 
-                category: "dorm", 
-                packingLocation: "guni", 
-                name_bm: "Kipas Meja Kecil (Jenis USB / Bateri)", 
-                name_en: "Mini Table Fan (USB / Battery)",
-                checked: false, 
-                tag: "Pilihan", 
-                desc_bm: "Penyelamat ketika bilik asrama agak panas di waktu siang.",
-                desc_en: "A lifesaver when the hostel room gets warm during midday."
-            },
 
             // MANDIAN & TOILETRIES
             { 
@@ -803,222 +656,39 @@
                 tag: "Wajib", 
                 desc_bm: "Kelengkapan kebersihan diri harian primer.",
                 desc_en: "Primary daily personal hygiene necessities."
-            },
-            { 
-                id: "gtoi-3", 
-                category: "toiletries", 
-                packingLocation: "baldi", 
-                name_bm: "Sabun Basuh Baju (Cecair / Serbuk)", 
-                name_en: "Laundry Detergent (Liquid / Powder)",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Membasuh pakaian sendiri di asrama.",
-                desc_en: "Washing your own clothes at the hostel laundry."
-            },
-
-            // KESIHATAN & UBAT
-            { 
-                id: "gkes-1", 
-                category: "kesihatan", 
-                packingLocation: "luggage", 
-                name_bm: "Ubat Demam / Paracetamol (Panadol)", 
-                name_en: "Fever Relief / Paracetamol (Panadol)",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Rawatan kendiri segera jika diserang sakit kepala atau demam.",
-                desc_en: "Immediate self-treatment if hit by a sudden headache or fever."
-            },
-            { 
-                id: "gkes-2", 
-                category: "kesihatan", 
-                packingLocation: "luggage", 
-                name_bm: "Ubat Sakit Perut & Cirit-Birit", 
-                name_en: "Stomach Ache & Diarrhea Meds",
-                checked: false, 
-                tag: "Pilihan", 
-                desc_bm: "Berguna sekiranya perut sensitif dengan perubahan makanan.",
-                desc_en: "Handy if your stomach is sensitive to changes in food."
-            },
-            { 
-                id: "gkes-3", 
-                category: "kesihatan", 
-                packingLocation: "luggage", 
-                name_bm: "Minyak Angin & Plaster Luka", 
-                name_en: "Medicated Oil & Plasters",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Menangani luka calar atau mengurangkan pening kepala.",
-                desc_en: "Treats small cuts or helps soothe minor headaches."
-            },
-
-            // DAPUR
-            { 
-                id: "gdap-1", 
-                category: "dapur", 
-                packingLocation: "guni", 
-                name_bm: "Pinggan, Mangkuk & Cawan Plastik Tebal", 
-                name_en: "Thick Plastic Plates, Bowls & Cups",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Pilih daripada bahan tidak mudah pecah untuk asrama.",
-                desc_en: "Choose non-breakable materials for hostel safety."
-            },
-            { 
-                id: "gdap-2", 
-                category: "dapur", 
-                packingLocation: "guni", 
-                name_bm: "Sudu & Garfu (Masing-masing 2 Pasang)", 
-                name_en: "Spoons & Forks (2 Pairs Each)",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Keperluan penting untuk menikmati makanan di bilik.",
-                desc_en: "Essential utensils for enjoying meals in your dorm room."
-            },
-            { 
-                id: "gdap-3", 
-                category: "dapur", 
-                packingLocation: "guni", 
-                name_bm: "Cecair Pencuci Pinggan & Span Bersih", 
-                name_en: "Dishwashing Liquid & Clean Sponge",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Menjaga kebersihan bekas makan minum asrama bagi menggelakkan serangga.",
-                desc_en: "Keeps your utensils clean to avoid pests in your room."
-            },
-            { 
-                id: "gdap-4", 
-                category: "dapur", 
-                packingLocation: "beg_kelas", 
-                name_bm: "Botol Air Termos (Tumbler)", 
-                name_en: "Thermal Water Bottle (Tumbler)",
-                checked: false, 
-                tag: "Wajib", 
-                desc_bm: "Mengisi bekalan air bersih untuk dibawa ke dewan kuliah.",
-                desc_en: "Holds clean drinking water to take to lecture halls."
             }
         ];
 
-        // Default Categories
+        // Default Metadata for Categories
         const defaultCategoryMeta = {
-            dokumen: { 
-                title_bm: "📄 Dokumen & Pentadbiran Penting", 
-                title_en: "📄 Vital Documents & Admin",
-                color: "from-sky-500 to-blue-600 dark:from-sky-900 dark:to-blue-950", 
-                border: "border-blue-100 dark:border-blue-900/30" 
-            },
-            pakaian: { 
-                title_bm: "👕 Pakaian & Penampilan Diri", 
-                title_en: "👕 Apparel & Personal Appearance",
-                color: "from-purple-500 to-indigo-600 dark:from-purple-900 dark:to-indigo-950", 
-                border: "border-indigo-100 dark:border-indigo-900/30" 
-            },
-            gadget: { 
-                title_bm: "💻 Belajar & Gajet Elektronik", 
-                title_en: "💻 Study & Electronic Gadgets",
-                color: "from-emerald-500 to-teal-600 dark:from-emerald-900 dark:to-teal-950", 
-                border: "border-teal-100 dark:border-teal-900/30" 
-            },
-            dorm: { 
-                title_bm: "🛏️ Kelengkapan Bilik & Dorm", 
-                title_en: "🛏️ Room & Dorm Essentials",
-                color: "from-amber-500 to-orange-600 dark:from-amber-900 dark:to-orange-950", 
-                border: "border-orange-100 dark:border-orange-900/30" 
-            },
-            toiletries: { 
-                title_bm: "🧼 Kelengkapan Mandian & Dobi", 
-                title_en: "🧼 Toiletries & Laundry Kits",
-                color: "from-pink-500 to-rose-600 dark:from-pink-900 dark:to-rose-950", 
-                border: "border-rose-100 dark:border-rose-900/30" 
-            },
-            kesihatan: { 
-                title_bm: "💊 Kesihatan & First Aid", 
-                title_en: "💊 Health & First Aid",
-                color: "from-red-500 to-rose-600 dark:from-red-900 dark:to-rose-950", 
-                border: "border-red-100 dark:border-red-900/30" 
-            },
-            dapur: { 
-                title_bm: "🍽️ Barangan Dapur & Snek", 
-                title_en: "🍽️ Pantry Ware & Snacks",
-                color: "from-violet-500 to-fuchsia-600 dark:from-violet-900 dark:to-fuchsia-950", 
-                border: "border-fuchsia-100 dark:border-fuchsia-900/30" 
-            }
+            dokumen: { title_bm: "📄 Dokumen & Pentadbiran Penting", title_en: "📄 Vital Documents & Admin", color: "from-sky-500 to-blue-600 dark:from-sky-900 dark:to-blue-950", border: "border-blue-100 dark:border-blue-900/30" },
+            pakaian: { title_bm: "👕 Pakaian & Penampilan Diri", title_en: "👕 Apparel & Personal Appearance", color: "from-purple-500 to-indigo-600 dark:from-purple-900 dark:to-indigo-950", border: "border-indigo-100 dark:border-indigo-900/30" },
+            gadget: { title_bm: "💻 Belajar & Gajet Elektronik", title_en: "💻 Study & Electronic Gadgets", color: "from-emerald-500 to-teal-600 dark:from-emerald-900 dark:to-teal-950", border: "border-teal-100 dark:border-teal-900/30" },
+            dorm: { title_bm: "🛏️ Kelengkapan Bilik & Dorm", title_en: "🛏️ Room & Dorm Essentials", color: "from-amber-500 to-orange-600 dark:from-amber-900 dark:to-orange-950", border: "border-orange-100 dark:border-orange-900/30" },
+            toiletries: { title_bm: "🧼 Kelengkapan Mandian & Dobi", title_en: "🧼 Toiletries & Laundry Kits", color: "from-pink-500 to-rose-600 dark:from-pink-900 dark:to-rose-950", border: "border-rose-100 dark:border-rose-900/30" }
         };
 
-        // Default Locations (Bags)
+        // Default Metadata for Locations (Bags)
         const defaultLocationMeta = {
-            beg_daftar: { 
-                title_bm: "📂 Beg Daftar / Hand Carry (Dokumen)", 
-                title_en: "📂 Registration Bag / Hand Carry",
-                color: "from-sky-600 to-blue-700 dark:from-sky-950 dark:to-blue-900", 
-                border: "border-blue-100 dark:border-blue-900/30" 
-            },
-            luggage: { 
-                title_bm: "🧳 Luggage / Bagasi Besar (Pakaian & Ubat)", 
-                title_en: "🧳 Main Luggage / Suitcase",
-                color: "from-purple-600 to-indigo-700 dark:from-purple-950 dark:to-indigo-900", 
-                border: "border-purple-100 dark:border-purple-900/30" 
-            },
-            beg_laptop: { 
-                title_bm: "💻 Beg Laptop (Gajet Utama)", 
-                title_en: "💻 Laptop Case (Gadget Center)",
-                color: "from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-950", 
-                border: "border-slate-300 dark:border-slate-800" 
-            },
-            beg_kelas: { 
-                title_bm: "🎒 Beg Ke Kelas (Alat Tulis & Buku)", 
-                title_en: "🎒 Classroom Backpack",
-                color: "from-emerald-600 to-teal-600 dark:from-emerald-950 dark:to-teal-900", 
-                border: "border-emerald-100 dark:border-emerald-900/30" 
-            },
-            baldi: { 
-                title_bm: "🪣 Baldi Mandian (Toiletries & Sabun)", 
-                title_en: "🪣 Shower Bucket / Toiletries Caddy",
-                color: "from-cyan-500 to-blue-500 dark:from-cyan-950 dark:to-blue-900", 
-                border: "border-cyan-100 dark:border-cyan-900/30" 
-            },
-            guni: { 
-                title_bm: "📦 Beg Guni / Kotak Tambahan", 
-                title_en: "📦 Storage Sacks & Utility Boxes",
-                color: "from-amber-600 to-orange-600 dark:from-amber-950 dark:to-orange-900", 
-                border: "border-amber-100 dark:border-amber-900/30" 
-            }
+            beg_daftar: { title_bm: "📂 Beg Daftar / Hand Carry", title_en: "📂 Registration Bag / Hand Carry", color: "from-sky-600 to-blue-700 dark:from-sky-950 dark:to-blue-900", border: "border-blue-100 dark:border-blue-900/30" },
+            luggage: { title_bm: "🧳 Luggage / Bagasi Besar", title_en: "🧳 Main Luggage / Suitcase", color: "from-purple-600 to-indigo-700 dark:from-purple-950 dark:to-indigo-900", border: "border-purple-100 dark:border-purple-900/30" },
+            beg_laptop: { title_bm: "💻 Beg Laptop (Gajet Utama)", title_en: "💻 Laptop Case (Gadget Center)", color: "from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-950", border: "border-slate-300 dark:border-slate-800" },
+            beg_kelas: { title_bm: "🎒 Beg Ke Kelas (Alat Tulis)", title_en: "🎒 Classroom Backpack", color: "from-emerald-600 to-teal-600 dark:from-emerald-950 dark:to-teal-900", border: "border-emerald-100 dark:border-emerald-900/30" },
+            baldi: { title_bm: "🪣 Baldi Mandian", title_en: "🪣 Shower Bucket", color: "from-cyan-500 to-blue-500 dark:from-cyan-950 dark:to-blue-900", border: "border-cyan-100 dark:border-cyan-900/30" },
+            guni: { title_bm: "📦 Beg Guni / Kotak Tambahan", title_en: "📦 Storage Sacks & Utility Boxes", color: "from-amber-600 to-orange-600 dark:from-amber-950 dark:to-orange-900", border: "border-amber-100 dark:border-amber-900/30" }
         };
 
-        // Color mapper for dynamically added groups
+        // Predefined palettes to assign when users create a custom category/bag
         const colorPaletteMap = {
-            blue: {
-                color: "from-sky-500 to-blue-600 dark:from-sky-900 dark:to-blue-950",
-                border: "border-blue-100 dark:border-blue-900/30",
-                badge: "bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-900/40"
-            },
-            purple: {
-                color: "from-purple-500 to-indigo-600 dark:from-purple-900 dark:to-indigo-950",
-                border: "border-indigo-100 dark:border-indigo-900/30",
-                badge: "bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 border-purple-100 dark:border-purple-900/40"
-            },
-            emerald: {
-                color: "from-emerald-500 to-teal-600 dark:from-emerald-900 dark:to-teal-950",
-                border: "border-teal-100 dark:border-teal-900/30",
-                badge: "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/40"
-            },
-            rose: {
-                color: "from-rose-500 to-pink-600 dark:from-rose-900 dark:to-pink-950",
-                border: "border-rose-100 dark:border-rose-900/30",
-                badge: "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border-rose-100 dark:border-rose-900/40"
-            },
-            amber: {
-                color: "from-amber-500 to-orange-600 dark:from-amber-900 dark:to-orange-950",
-                border: "border-orange-100 dark:border-orange-900/30",
-                badge: "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border-amber-100 dark:border-amber-900/40"
-            },
-            indigo: {
-                color: "from-indigo-600 to-violet-700 dark:from-indigo-950 dark:to-violet-900",
-                border: "border-indigo-200 dark:border-indigo-800/40",
-                badge: "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-900/40"
-            }
+            blue: { color: "from-sky-500 to-blue-600 dark:from-sky-900 dark:to-blue-950", border: "border-blue-100 dark:border-blue-900/30" },
+            purple: { color: "from-purple-500 to-indigo-600 dark:from-purple-900 dark:to-indigo-950", border: "border-indigo-100 dark:border-indigo-900/30" },
+            emerald: { color: "from-emerald-500 to-teal-600 dark:from-emerald-900 dark:to-teal-950", border: "border-teal-100 dark:border-teal-900/30" },
+            rose: { color: "from-rose-500 to-pink-600 dark:from-rose-900 dark:to-pink-950", border: "border-rose-100 dark:border-rose-900/30" },
+            amber: { color: "from-amber-500 to-orange-600 dark:from-amber-900 dark:to-orange-950", border: "border-orange-100 dark:border-orange-900/30" },
+            indigo: { color: "from-indigo-600 to-violet-700 dark:from-indigo-950 dark:to-violet-900", border: "border-indigo-200 dark:border-indigo-800/40" }
         };
 
-        // State control
+        // State control variables
         let items = [];
         let categoryMeta = {};
         let locationMeta = {};
@@ -1047,38 +717,35 @@
             renderTips();
             updateProgress();
             syncThemeUI();
-            updateGroupColorPreview();
         };
 
         function loadMetaData() {
-            // Categories load & merge
+            // Load categories
             categoryMeta = { ...defaultCategoryMeta };
-            const customCats = localStorage.getItem('uprep_custom_categories_v1');
+            const customCats = localStorage.getItem('uprep_custom_categories_v2');
             if (customCats) {
                 try {
-                    const parsed = JSON.parse(customCats);
-                    Object.assign(categoryMeta, parsed);
+                    Object.assign(categoryMeta, JSON.parse(customCats));
                 } catch(e) { console.error("Error loading custom categories", e); }
             }
 
-            // Locations load & merge
+            // Load locations
             locationMeta = { ...defaultLocationMeta };
-            const customLocs = localStorage.getItem('uprep_custom_locations_v1');
+            const customLocs = localStorage.getItem('uprep_custom_locations_v2');
             if (customLocs) {
                 try {
-                    const parsed = JSON.parse(customLocs);
-                    Object.assign(locationMeta, parsed);
+                    Object.assign(locationMeta, JSON.parse(customLocs));
                 } catch(e) { console.error("Error loading custom locations", e); }
             }
         }
 
         function loadItemsData() {
-            const stored = localStorage.getItem('uprep_universal_items_v1');
+            const stored = localStorage.getItem('uprep_universal_items_v2');
             if (stored) {
                 try {
                     items = JSON.parse(stored);
                     
-                    // Sync default items to avoid losing progress but adding any new template items
+                    // Sync template items to avoid losing progress but adding any new default items
                     const existingIds = new Set(items.map(i => i.id));
                     let newlyAdded = false;
                     defaultChecklist.forEach(defItem => {
@@ -1088,7 +755,7 @@
                         }
                     });
                     if (newlyAdded) {
-                        localStorage.setItem('uprep_universal_items_v1', JSON.stringify(items));
+                        localStorage.setItem('uprep_universal_items_v2', JSON.stringify(items));
                     }
                 } catch (e) {
                     items = [...defaultChecklist];
@@ -1099,7 +766,7 @@
         }
 
         function saveData() {
-            localStorage.setItem('uprep_universal_items_v1', JSON.stringify(items));
+            localStorage.setItem('uprep_universal_items_v2', JSON.stringify(items));
             updateProgress();
         }
 
@@ -1155,21 +822,17 @@
             document.getElementById('btn-filter-active').innerText = dictionary.filter_active;
             document.getElementById('btn-filter-completed').innerText = dictionary.filter_completed;
 
-            // Dynamic Group/Bag Manager Strings
-            const isManagerOpen = !document.getElementById('group-creator-panel').classList.contains('hidden');
-            document.getElementById('manager-toggle-btn').innerText = isManagerOpen ? dictionary.mngr_toggle_close : dictionary.mngr_toggle_open;
-            document.getElementById('manager-panel-title').innerText = dictionary.mngr_panel_title;
-            document.getElementById('lbl-group-type').innerText = dictionary.mngr_lbl_type;
-            document.getElementById('lbl-group-color').innerText = dictionary.mngr_lbl_color;
-            document.getElementById('lbl-group-name-bm').innerText = dictionary.mngr_lbl_name_bm;
-            document.getElementById('lbl-group-name-en').innerText = dictionary.mngr_lbl_name_en;
-            document.getElementById('lbl-preview-tag').innerText = dictionary.mngr_preview_title;
-            document.getElementById('btn-save-group').innerHTML = `<i class="fa-solid fa-floppy-disk"></i> <span>${dictionary.mngr_btn_save}</span>`;
+            // Inline manager text placeholders
+            document.getElementById('lbl-new-cat-name').innerText = dictionary.lbl_new_cat_name;
+            document.getElementById('lbl-new-loc-name').innerText = dictionary.lbl_new_loc_name;
+            document.getElementById('new-cat-name-input').placeholder = dictionary.new_cat_placeholder;
+            document.getElementById('new-loc-name-input').placeholder = dictionary.new_loc_placeholder;
         }
 
         function populateFormDropdowns() {
             const catSelect = document.getElementById('custom-item-category');
             const locSelect = document.getElementById('custom-item-location');
+            const dictionary = uiDict[currentLang];
 
             const prevCatVal = catSelect.value;
             const prevLocVal = locSelect.value;
@@ -1185,6 +848,12 @@
                 option.innerText = title;
                 catSelect.appendChild(option);
             });
+            // Append "Create Custom Category" inline option at the very bottom
+            const optionNewCat = document.createElement('option');
+            optionNewCat.value = "CREATE_NEW_CAT";
+            optionNewCat.innerText = dictionary.dropdown_create_cat_label;
+            optionNewCat.className = "text-brand-600 font-bold dark:text-brand-400";
+            catSelect.appendChild(optionNewCat);
 
             // Populate locations
             Object.keys(locationMeta).forEach(key => {
@@ -1194,10 +863,40 @@
                 option.innerText = title;
                 locSelect.appendChild(option);
             });
+            // Append "Create Custom Bag Location" inline option at the very bottom
+            const optionNewLoc = document.createElement('option');
+            optionNewLoc.value = "CREATE_NEW_LOC";
+            optionNewLoc.innerText = dictionary.dropdown_create_loc_label;
+            optionNewLoc.className = "text-brand-600 font-bold dark:text-brand-400";
+            locSelect.appendChild(optionNewLoc);
 
             // Restore selection if existed
             if (prevCatVal && categoryMeta[prevCatVal]) catSelect.value = prevCatVal;
             if (prevLocVal && locationMeta[prevLocVal]) locSelect.value = prevLocVal;
+
+            handleCategorySelectionChange();
+            handleLocationSelectionChange();
+        }
+
+        // Show/Hide Custom text inputs based on selector choices
+        function handleCategorySelectionChange() {
+            const selectVal = document.getElementById('custom-item-category').value;
+            const textContainer = document.getElementById('new-cat-input-container');
+            if (selectVal === 'CREATE_NEW_CAT') {
+                textContainer.classList.remove('hidden');
+            } else {
+                textContainer.classList.add('hidden');
+            }
+        }
+
+        function handleLocationSelectionChange() {
+            const selectVal = document.getElementById('custom-item-location').value;
+            const textContainer = document.getElementById('new-loc-input-container');
+            if (selectVal === 'CREATE_NEW_LOC') {
+                textContainer.classList.remove('hidden');
+            } else {
+                textContainer.classList.add('hidden');
+            }
         }
 
         function cycleTheme() {
@@ -1247,77 +946,7 @@
             }
         });
 
-        // Toggle Expandable Group Creator Panel
-        function toggleGroupCreator() {
-            const panel = document.getElementById('group-creator-panel');
-            panel.classList.toggle('hidden');
-            updateUILanguage();
-        }
-
-        // Color selector preview updater inside Manager
-        function updateGroupColorPreview() {
-            const colorKey = document.getElementById('new-group-color').value;
-            const typeKey = document.getElementById('new-group-type').value;
-            const badge = document.getElementById('group-color-preview-badge');
-            
-            const selectedPalette = colorPaletteMap[colorKey];
-            badge.className = `px-3 py-1 text-[10px] font-extrabold rounded-lg border uppercase tracking-wider transition-all ${selectedPalette.badge}`;
-            
-            const txt = document.getElementById('new-group-color').options[document.getElementById('new-group-color').selectedIndex].text;
-            badge.innerText = `${typeKey === 'category' ? '📁' : '🧳'} ${txt}`;
-        }
-
-        function createNewGroup() {
-            const type = document.getElementById('new-group-type').value;
-            const colorKey = document.getElementById('new-group-color').value;
-            const nameBm = document.getElementById('new-group-name-bm').value.trim();
-            const nameEn = document.getElementById('new-group-name-en').value.trim();
-
-            const dict = uiDict[currentLang];
-
-            if (!nameBm || !nameEn) {
-                showToast(dict.mngr_err_empty, 'fa-circle-exclamation', 'text-rose-500');
-                return;
-            }
-
-            const uniqueId = 'custom_' + type + '_' + Date.now();
-            const palette = colorPaletteMap[colorKey];
-
-            const newMetadata = {
-                title_bm: (type === 'category' ? '📁 ' : '🧳 ') + nameBm,
-                title_en: (type === 'category' ? '📁 ' : '🧳 ') + nameEn,
-                color: palette.color,
-                border: palette.border
-            };
-
-            if (type === 'category') {
-                // Save custom category
-                const storedCustomCats = localStorage.getItem('uprep_custom_categories_v1');
-                let customCatsObj = storedCustomCats ? JSON.parse(storedCustomCats) : {};
-                customCatsObj[uniqueId] = newMetadata;
-                localStorage.setItem('uprep_custom_categories_v1', JSON.stringify(customCatsObj));
-                
-                showToast(dict.mngr_success_cat, 'fa-folder-plus', 'text-emerald-500');
-            } else {
-                // Save custom location
-                const storedCustomLocs = localStorage.getItem('uprep_custom_locations_v1');
-                let customLocsObj = storedCustomLocs ? JSON.parse(storedCustomLocs) : {};
-                customLocsObj[uniqueId] = newMetadata;
-                localStorage.setItem('uprep_custom_locations_v1', JSON.stringify(customLocsObj));
-                
-                showToast(dict.mngr_success_loc, 'fa-suitcase', 'text-emerald-500');
-            }
-
-            // Clear inputs & Reload config
-            document.getElementById('new-group-name-bm').value = '';
-            document.getElementById('new-group-name-en').value = '';
-            
-            loadMetaData();
-            populateFormDropdowns();
-            renderChecklist();
-            toggleGroupCreator();
-        }
-
+        // Mobile responsive tabs switcher
         function setMobileTab(tab) {
             currentMobileTab = tab;
             const btnChecklist = document.getElementById('tab-btn-checklist');
@@ -1487,16 +1116,12 @@
                         title: "PENTING SEBELUM LAPOR DIRI",
                         blocks: [
                             {
-                                label: "📋 Ikut Garis Panduan Rasmi:",
-                                content: "Semak portal rasmi universiti/kolej anda untuk keperluan borang pemeriksaan kesihatan, slip pembayaran, kad matrik, dan borang kebajikan."
+                                label: "📋 Ikut Garis Panduan Rasmi Uni Anda:",
+                                content: "Sentiasa semak portal rasmi universiti/kolej masing-masing untuk senarai lengkap dokumen bertulis, laporan pemeriksaan kesihatan, resit bayaran & tarikh pendaftaran."
                             },
                             {
                                 label: "📂 Sijil Asal & Salinan Disahkan:",
-                                content: "Sediakan fail khas mengandungi salinan sijil lahir, keputusan SPM/STPM, MyKad pelajar, dan MyKad penjaga yang disahkan."
-                            },
-                            {
-                                label: "💰 Kewangan & Buku Akaun:",
-                                content: "Sediakan akaun bank aktif atas nama sendiri mengikut bank rasmi yang ditetapkan oleh institusi bagi pengkreditan elaun/pinjaman."
+                                content: "Sediakan sekurang-kurangnya 3-4 salinan fotostat bagi keputusan SPM/STPM, MyID pelajar & penjaga, serta sijil beranak yang disahkan."
                             }
                         ]
                     },
@@ -1507,7 +1132,7 @@
                         blocks: [
                             {
                                 label: "👔 Kod Berpakaian Kuliah",
-                                content: "Sediakan baju kemeja, baju kurung bersesuaian, serta kasut bertutup penuh mengikut garis panduan etika pemakaian rasmi institusi anda."
+                                content: "Sediakan pakaian kuliah sopan yang mematuhi garis panduan institusi anda (baju kurung formal, kasut bertutup wajib semasa kelas)."
                             },
                             {
                                 label: "🔌 Keselamatan Extension Plug",
@@ -1527,16 +1152,12 @@
                         title: "IMPORTANT PRE-REGISTRATION TIPS",
                         blocks: [
                             {
-                                label: "📋 Follow Official Guidelines:",
+                                label: "📋 Follow Your Uni's Guidelines:",
                                 content: "Constantly verify your institution's registration requirements regarding health screening reports, billing statements, and student profiles."
                             },
                             {
                                 label: "📂 Certified Original Documents:",
                                 content: "Keep your certified copies of academic transcript sheets, birth certificates, and parent's ID cards neatly organized in a waterproof file case."
-                            },
-                            {
-                                label: "💰 Active Personal Bank Account:",
-                                content: "Ensure you open a bank account under your name with the designated bank requested by the campus to smooth financial transactions."
                             }
                         ]
                     },
@@ -1624,21 +1245,88 @@
         }
 
         function addCustomItem() {
+            const dictionary = uiDict[currentLang];
+
             const nameInput = document.getElementById('custom-item-name');
             const categorySelect = document.getElementById('custom-item-category');
             const locationSelect = document.getElementById('custom-item-location');
             const tagInput = document.querySelector('input[name="custom-item-tag"]:checked');
 
             const name = nameInput.value.trim();
-            const category = categorySelect.value;
-            const location = locationSelect.value;
+            let category = categorySelect.value;
+            let location = locationSelect.value;
             const tag = tagInput ? tagInput.value : 'Wajib';
 
             if (!name) {
-                showToast(uiDict[currentLang].toast_warn_empty, 'fa-circle-exclamation', 'text-amber-500');
+                showToast(dictionary.toast_warn_empty, 'fa-circle-exclamation', 'text-amber-500');
                 return;
             }
 
+            // 1. INLINE CATEGORY CREATION CHECK
+            if (category === 'CREATE_NEW_CAT') {
+                const newCatName = document.getElementById('new-cat-name-input').value.trim();
+                if (!newCatName) {
+                    showToast(dictionary.toast_err_new_cat_empty, 'fa-circle-exclamation', 'text-rose-500');
+                    return;
+                }
+
+                // Auto generate a unique category key
+                const uniqueCatKey = 'custom_cat_' + Date.now();
+                const colors = ['blue', 'purple', 'emerald', 'rose', 'amber', 'indigo'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                const palette = colorPaletteMap[randomColor];
+
+                // Register category metadata
+                categoryMeta[uniqueCatKey] = {
+                    title_bm: '📁 ' + newCatName,
+                    title_en: '📁 ' + newCatName,
+                    color: palette.color,
+                    border: palette.border
+                };
+
+                // Save custom category to localStorage
+                const storedCustomCats = localStorage.getItem('uprep_custom_categories_v2');
+                let customCatsObj = storedCustomCats ? JSON.parse(storedCustomCats) : {};
+                customCatsObj[uniqueCatKey] = categoryMeta[uniqueCatKey];
+                localStorage.setItem('uprep_custom_categories_v2', JSON.stringify(customCatsObj));
+
+                category = uniqueCatKey; // Swap value to the newly created category key
+                document.getElementById('new-cat-name-input').value = ''; // Reset input
+            }
+
+            // 2. INLINE LOCATION (BAG) CREATION CHECK
+            if (location === 'CREATE_NEW_LOC') {
+                const newLocName = document.getElementById('new-loc-name-input').value.trim();
+                if (!newLocName) {
+                    showToast(dictionary.toast_err_new_loc_empty, 'fa-circle-exclamation', 'text-rose-500');
+                    return;
+                }
+
+                // Auto generate a unique bag location key
+                const uniqueLocKey = 'custom_loc_' + Date.now();
+                const colors = ['blue', 'purple', 'emerald', 'rose', 'amber', 'indigo'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                const palette = colorPaletteMap[randomColor];
+
+                // Register location metadata
+                locationMeta[uniqueLocKey] = {
+                    title_bm: '🧳 ' + newLocName,
+                    title_en: '🧳 ' + newLocName,
+                    color: palette.color,
+                    border: palette.border
+                };
+
+                // Save custom location to localStorage
+                const storedCustomLocs = localStorage.getItem('uprep_custom_locations_v2');
+                let customLocsObj = storedCustomLocs ? JSON.parse(storedCustomLocs) : {};
+                customLocsObj[uniqueLocKey] = locationMeta[uniqueLocKey];
+                localStorage.setItem('uprep_custom_locations_v2', JSON.stringify(customLocsObj));
+
+                location = uniqueLocKey; // Swap value to the newly created location key
+                document.getElementById('new-loc-name-input').value = ''; // Reset input
+            }
+
+            // Create the new list item
             const newItem = {
                 id: 'custom-' + Date.now(),
                 category: category,
@@ -1653,10 +1341,16 @@
 
             items.push(newItem);
             saveData();
+            
+            // Re-populate dropdown to include newly created keys & select them
+            populateFormDropdowns();
+            document.getElementById('custom-item-category').value = category;
+            document.getElementById('custom-item-location').value = location;
+
             renderChecklist();
             
             nameInput.value = '';
-            showToast(`${uiDict[currentLang].toast_added}: ${name}`, 'fa-circle-plus', 'text-brand-500');
+            showToast(`${dictionary.toast_added}: ${name}`, 'fa-circle-plus', 'text-brand-500');
         }
 
         // Delete item
@@ -1693,15 +1387,17 @@
 
         function resetAllChecklist() {
             // Restore default metadata
-            localStorage.removeItem('uprep_custom_categories_v1');
-            localStorage.removeItem('uprep_custom_locations_v1');
+            localStorage.removeItem('uprep_custom_categories_v2');
+            localStorage.removeItem('uprep_custom_locations_v2');
+            localStorage.removeItem('uprep_universal_items_v2');
             
             items = defaultChecklist.map(i => ({...i, checked: false}));
-            localStorage.setItem('uprep_universal_items_v1', JSON.stringify(items));
             
             loadMetaData();
             populateFormDropdowns();
             renderChecklist();
+            updateProgress();
+            
             showToast(uiDict[currentLang].toast_reset, 'fa-rotate-left', 'text-brand-500');
         }
 
