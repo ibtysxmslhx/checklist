@@ -68,20 +68,26 @@
                 </div>
                 <div>
                     <span class="font-extrabold text-slate-900 dark:text-white tracking-tight block text-sm sm:text-base">U-PREP HUB 🎒</span>
-                    <span class="text-[10px] sm:text-xs text-brand-600 dark:text-brand-400 font-bold uppercase tracking-wider block">Universal Uni & College Checklist</span>
+                    <span id="navbar-subtitle" class="text-[10px] sm:text-xs text-brand-600 dark:text-brand-400 font-bold uppercase tracking-wider block">Universal Uni & College Checklist</span>
                 </div>
             </div>
             
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-1.5 sm:space-x-2">
+                <!-- Language Switcher Button -->
+                <button onclick="toggleLanguage()" class="text-xs font-bold px-2.5 py-2 rounded-lg bg-brand-50 dark:bg-brand-950/50 hover:bg-brand-100 dark:hover:bg-brand-900/60 text-brand-700 dark:text-brand-400 border border-brand-100 dark:border-brand-900/30 transition-all flex items-center gap-1" title="Tukar Bahasa (Change Language)">
+                    <i class="fa-solid fa-globe text-sm"></i>
+                    <span id="lang-btn-text" class="uppercase">BM</span>
+                </button>
+
                 <!-- Theme Toggle Button -->
-                <button onclick="cycleTheme()" id="theme-toggle" class="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all duration-200" title="Tukar Tema (Gelap/Cerah/Sistem)">
+                <button onclick="cycleTheme()" id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all duration-200" title="Tukar Tema (Gelap/Cerah/Sistem)">
                     <i id="theme-toggle-icon" class="fa-solid fa-circle-half-stroke"></i>
                 </button>
                 
                 <!-- Reset Button -->
-                <button onclick="resetAllChecklist()" class="text-xs font-bold px-3 py-2.5 text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 rounded-lg transition-colors duration-200 flex items-center space-x-1 border border-rose-100 dark:border-rose-900/30" title="Set semula semua progres">
+                <button onclick="resetAllChecklist()" class="text-xs font-bold px-2.5 sm:px-3 py-2 text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 rounded-lg transition-colors duration-200 flex items-center space-x-1 border border-rose-100 dark:border-rose-900/30" title="Set semula semua progres">
                     <i class="fa-solid fa-rotate-left"></i>
-                    <span class="hidden sm:inline">Reset Progres</span>
+                    <span id="reset-btn-label" class="hidden sm:inline">Reset Progres</span>
                 </button>
             </div>
         </div>
@@ -90,14 +96,14 @@
     <header class="bg-gradient-to-br from-brand-900 via-brand-700 to-indigo-950 text-white py-12 px-4 relative overflow-hidden border-b border-brand-800/20">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.15),transparent)]"></div>
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="bg-white/10 dark:bg-brand-950/80 text-brand-100 text-xs font-bold tracking-wider px-3.5 py-1.5 rounded-full border border-white/20 dark:border-brand-800/40 uppercase inline-flex items-center gap-1.5">
+            <span id="header-badge" class="bg-white/10 dark:bg-brand-950/80 text-brand-100 text-xs font-bold tracking-wider px-3.5 py-1.5 rounded-full border border-white/20 dark:border-brand-800/40 uppercase inline-flex items-center gap-1.5">
                 <span class="w-2 h-2 bg-emerald-400 rounded-full animate-ping"></span>
                 🏫 Panduan Am Pendaftaran & Kemasukan Kampus
             </span>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-4 mb-3 tracking-tight bg-gradient-to-r from-white to-brand-100 bg-clip-text text-transparent">
+            <h1 id="header-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-4 mb-3 tracking-tight bg-gradient-to-r from-white to-brand-100 bg-clip-text text-transparent">
                 Dah Sedia Melangkah Ke Menara Gading? 🧳
             </h1>
-            <p class="text-brand-100 text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
+            <p id="header-desc" class="text-brand-100 text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
                 Checklist universal yang boleh disesuaikan mengikut bagasi fizikal anda. Sesuai untuk semua universiti, kolej, matrikulasi dan politeknik.
             </p>
 
@@ -106,7 +112,7 @@
                 <div class="flex justify-between items-center mb-3">
                     <div class="flex items-center space-x-2">
                         <i class="fa-solid fa-clipboard-check text-brand-300 dark:text-brand-400 text-xl"></i>
-                        <span class="font-bold text-white tracking-wide text-sm sm:text-base">Jumlah Progres Bungkusan</span>
+                        <span id="progress-title-text" class="font-bold text-white tracking-wide text-sm sm:text-base">Jumlah Progres Bungkusan</span>
                     </div>
                     <span id="overall-progress-text" class="text-2xl font-extrabold text-emerald-400">0%</span>
                 </div>
@@ -118,7 +124,7 @@
 
                 <div class="flex justify-between items-center mt-4 pt-4 border-t border-white/10 dark:border-slate-800/60 text-xs text-brand-200 dark:text-slate-400">
                     <div>
-                        <span id="completed-count" class="font-bold text-emerald-400 text-sm">0</span> daripada <span id="total-count" class="font-bold text-white dark:text-slate-200 text-sm">0</span> barangan selesai dibungkus
+                        <span id="completed-count" class="font-bold text-emerald-400 text-sm">0</span> <span id="completed-text-span">daripada</span> <span id="total-count" class="font-bold text-white dark:text-slate-200 text-sm">0</span> <span id="completed-suffix-span">barangan selesai dibungkus</span>
                     </div>
                     <div id="packing-status-message" class="font-semibold text-emerald-300">
                         Jom mula mengemas! 🚀
@@ -128,7 +134,6 @@
         </div>
     </header>
 
-    <!-- Mobile View Switcher (Only visible on mobile screen) -->
     <div class="lg:hidden sticky top-[69px] z-20 bg-slate-50/95 dark:bg-slate-950/95 border-b border-slate-200 dark:border-slate-900 py-3 px-4 shadow-sm backdrop-blur-md transition-colors duration-300">
         <div class="flex p-1 bg-slate-200 dark:bg-slate-900 rounded-xl max-w-md mx-auto">
             <button onclick="setMobileTab('checklist')" id="tab-btn-checklist" class="flex-1 py-2.5 text-center text-xs font-extrabold rounded-lg transition-all duration-200 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs">
@@ -140,70 +145,69 @@
         </div>
     </div>
 
-    <!-- Main Content Area -->
     <main class="max-w-5xl mx-auto px-4 mt-6 lg:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         <!-- Checklist Column (Left/Center - span 2) -->
         <div id="column-checklist" class="lg:col-span-2 space-y-6">
             
             <!-- Add Personal Item Card -->
-            <div id="add-item-card" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm relative overflow-hidden transition-colors duration-300">
+            <div id="add-item-card-wrapper" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm relative overflow-hidden transition-colors duration-300">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-brand-500/10 rounded-full blur-2xl"></div>
                 
-                <h3 class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-2 text-sm uppercase tracking-wider mb-3">
+                <h3 id="add-item-title" class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-2 text-sm uppercase tracking-wider mb-3">
                     <i class="fa-solid fa-circle-plus text-brand-500 text-lg"></i>
                     <span>Tambah Barang Peribadi</span>
                 </h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                <p id="add-item-desc" class="text-xs text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
                     Sistem akan memasukkan barang tersendiri anda ke dalam senarai interaktif di bawah secara automatik mengikut lokasi isian beg pilihan anda.
                 </p>
                 
                 <div class="space-y-3 relative z-10">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Nama Barang Kustom</label>
+                        <label id="input-label-name" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Nama Barang Kustom</label>
                         <input type="text" id="custom-item-name" placeholder="Contoh: Seterika, Botol Tambahan, Ubat Alahan" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-500 transition-all">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Kategori Utama</label>
+                            <label id="input-label-cat" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Kategori Utama</label>
                             <select id="custom-item-category" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-500 transition-all">
-                                <option value="dokumen">📄 Dokumen</option>
-                                <option value="pakaian">👕 Pakaian</option>
-                                <option value="gadget">💻 Belajar & Gajet</option>
-                                <option value="dorm">🛏️ Bilik & Dorm</option>
-                                <option value="toiletries">🧼 Mandian & Dobi</option>
-                                <option value="kesihatan">💊 Kesihatan</option>
-                                <option value="dapur">🍽️ Alatan Dapur</option>
+                                <option value="dokumen">📄 Dokumen / Documents</option>
+                                <option value="pakaian">👕 Pakaian / Clothes</option>
+                                <option value="gadget">💻 Belajar & Gajet / Study & Gadgets</option>
+                                <option value="dorm">🛏️ Bilik & Dorm / Bedroom & Dorm</option>
+                                <option value="toiletries">🧼 Mandian & Dobi / Toiletries & Laundry</option>
+                                <option value="kesihatan">💊 Kesihatan / First Aid</option>
+                                <option value="dapur">🍽️ Alatan Dapur / Kitchen utensils</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Lokasi Isian Beg (Ikut Kaedah Packing)</label>
+                            <label id="input-label-loc" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Lokasi Isian Beg (Ikut Kaedah Packing)</label>
                             <select id="custom-item-location" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-500 transition-all">
-                                <option value="beg_daftar">📂 Beg Daftar (Hand Carry)</option>
+                                <option value="beg_daftar">📂 Beg Daftar / Hand Carry (Documents)</option>
                                 <option value="luggage">🧳 Luggage / Beg Besar</option>
                                 <option value="beg_laptop">💻 Beg Laptop / Peranti</option>
-                                <option value="beg_kelas">🎒 Beg Kelas</option>
-                                <option value="baldi">🪣 Baldi Mandi</option>
+                                <option value="beg_kelas">🎒 Beg Kelas / Study Bag</option>
+                                <option value="baldi">🪣 Baldi Mandi / Bath Bucket</option>
                                 <option value="guni">📦 Beg Guni / Kotak Tambahan</option>
                             </select>
                         </div>
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
                         <div>
-                            <span class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Tahap Kepentingan</span>
+                            <span id="input-label-priority" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Tahap Kepentingan</span>
                             <div class="flex space-x-2">
                                 <label class="flex items-center justify-center px-4 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
                                     <input type="radio" name="custom-item-tag" value="Wajib" checked class="sr-only">
-                                    <span class="tag-label text-rose-500 dark:text-rose-400">🚨 Wajib</span>
+                                    <span id="priority-label-wajib" class="tag-label text-rose-500 dark:text-rose-400">🚨 Wajib</span>
                                 </label>
                                 <label class="flex items-center justify-center px-4 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
                                     <input type="radio" name="custom-item-tag" value="Pilihan" class="sr-only">
-                                    <span class="tag-label text-amber-500 dark:text-amber-400">💡 Pilihan</span>
+                                    <span id="priority-label-pilihan" class="tag-label text-amber-500 dark:text-amber-400">💡 Pilihan</span>
                                 </label>
                             </div>
                         </div>
-                        <button onclick="addCustomItem()" class="w-full sm:w-auto px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-xs font-bold transition-all shadow-md shadow-brand-500/10 flex items-center justify-center gap-1.5 self-end">
-                            <i class="fa-solid fa-plus"></i> Masukkan ke Senarai Semak
+                        <button onclick="addCustomItem()" id="btn-add-item" class="w-full sm:w-auto px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-xs font-bold transition-all shadow-md shadow-brand-500/10 flex items-center justify-center gap-1.5 self-end">
+                            <i class="fa-solid fa-plus"></i> <span>Masukkan ke Senarai Semak</span>
                         </button>
                     </div>
                 </div>
@@ -214,7 +218,7 @@
                 
                 <!-- View Mode Selector -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
-                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <span id="sort-title-text" class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
                         <i class="fa-solid fa-sliders text-brand-500"></i>
                         <span>Susunan Senarai:</span>
                     </span>
@@ -251,86 +255,9 @@
 
         <!-- Guide & Tips Column (Right - span 1) -->
         <div id="column-info" class="space-y-6 hidden lg:block">
-
-            <!-- General Important Guide Checklist Card -->
-            <div class="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
-                <h3 class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-2 text-xs uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">
-                    <i class="fa-solid fa-circle-exclamation text-brand-500 text-lg"></i>
-                    <span>PENTING SEBELUM LAPOR DIRI</span>
-                </h3>
-
-                <!-- General Reminder 1 -->
-                <div class="mb-4 space-y-2">
-                    <span class="text-[11px] font-extrabold text-brand-600 dark:text-brand-400 uppercase tracking-wider block">📋 Ikut Garis Panduan Rasmi:</span>
-                    <div class="bg-slate-100 dark:bg-slate-950/70 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
-                        <p class="font-semibold text-slate-800 dark:text-slate-100">Portal & Surat Tawaran</p>
-                        <p>Pastikan anda menyemak senarai dokumen spesifik yang dikehendaki oleh portal pendaftaran rasmi universiti/kolej masing-masing sebelum tarikh lapor diri.</p>
-                        <p><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Jangan tangguh untuk mencetak slip atau resit bukti yuran pendaftaran.</p>
-                    </div>
-                </div>
-
-                <!-- Document Checklist Reminder -->
-                <div class="mb-4 space-y-2">
-                    <span class="text-[11px] font-extrabold text-amber-600 dark:text-amber-400 uppercase tracking-wider block">📂 Fotostat & Salinan Dokumen:</span>
-                    <div class="bg-slate-100 dark:bg-slate-950/70 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
-                        <p>Fotostat sekurang-kurangnya **3 hingga 5 keping** dokumen asal seperti Kad Pengenalan, Surat Tawaran, Slip SPM/Keputusan Peperiksaan, Sijil Lahir, dan Sijil Berhenti Sekolah.</p>
-                        <p class="text-[10px] text-amber-600 dark:text-amber-400 italic"><i class="fa-solid fa-circle-info mr-1"></i> Sesetengah IPT memerlukan salinan dokumen yang telah disahkan (certified true copy) oleh Pegawai Gred A/Pengetua.</p>
-                    </div>
-                </div>
-
-                <!-- Financial Aids -->
-                <div class="space-y-2">
-                    <span class="text-[11px] font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block">💰 Pembiayaan & Kewangan:</span>
-                    <div class="bg-slate-100 dark:bg-slate-950/70 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
-                        <p>Sediakan buku akaun bank atau slip penyata bank yang didaftarkan atas nama anda bagi urusan kemasukan elaun tajaan, biasiswa, PTPTN, atau zakat.</p>
-                        <p><i class="fa-solid fa-money-bill-wave text-emerald-500 mr-1.5"></i> Sediakan wang tunai sekedarnya untuk kegunaan kecemasan di minggu orientasi.</p>
-                    </div>
-                </div>
+            <div id="tips-container-wrapper" class="space-y-6">
+                <!-- Javascript will inject bilingual Tips widgets dynamically here -->
             </div>
-
-            <!-- General Student Hacks Card -->
-            <div class="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
-                <h3 class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-2 text-xs uppercase tracking-wider mb-3">
-                    <i class="fa-solid fa-lightbulb text-amber-500 text-lg"></i>
-                    <span>Hacks Kehidupan Asrama</span>
-                </h3>
-                
-                <div class="space-y-4">
-                    <div class="bg-slate-100 dark:bg-slate-950 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/60 shadow-xs">
-                        <span class="text-xs font-bold text-brand-600 dark:text-brand-400 block mb-1">👔 Kod Etika Berpakaian Akademik</span>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Setiap IPT/Kolej mempunyai garis panduan kod etika pakaian kuliah. Pakaian formal berkolar, kasut bertutup, atau baju kurung biasanya menjadi pilihan wajib ketika berurusan di pejabat, dewan kuliah, mahupun perpustakaan.
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-100 dark:bg-slate-950 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/60 shadow-xs">
-                        <span class="text-xs font-bold text-brand-600 dark:text-brand-400 block mb-1">🔌 Seterika & Extension Plug Selamat</span>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Bilik dorm kebiasaannya hanya menyediakan 2 hingga 3 punca kuasa elektrik sahaja untuk berkongsi. Sediakan *extension plug* berkualiti tinggi yang diiktiraf badan keselamatan negara anda (seperti SIRIM) demi menjaga keselamatan bilik.
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-100 dark:bg-slate-950 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/60 shadow-xs">
-                        <span class="text-xs font-bold text-brand-600 dark:text-brand-400 block mb-1">🔑 Keselamatan Loker (Kunci Mangga)</span>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Pastikan membawa mangga berkunci (padlock) sederhana besar berserta kunci pendua. Loker peribadi anda di asrama wajib sentiasa berkunci bagi mengelakkan insiden kehilangan barangan penting atau berharga.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Aesthetic Motivation Quote Card -->
-            <div class="bg-slate-900 text-slate-100 p-6 rounded-2xl text-center relative overflow-hidden shadow-lg transition-colors duration-300">
-                <div class="absolute -top-10 -right-10 w-24 h-24 bg-brand-500/20 rounded-full blur-xl"></div>
-                <i class="fa-solid fa-quote-left text-3xl text-brand-500/40 block mb-2"></i>
-                <p class="text-xs italic text-slate-300 leading-relaxed">
-                    "Permulaan kehidupan baru di universiti atau kolej adalah tempoh penting yang akan mencorakkan kerjaya masa depan anda. Nikmati perjalanannya dengan persediaan yang mantap!"
-                </p>
-                <div class="mt-4 text-[10px] font-bold tracking-widest text-brand-400 uppercase">
-                    U-PREP Global Team
-                </div>
-            </div>
-
         </div>
 
     </main>
@@ -342,119 +269,680 @@
     </div>
 
     <script>
-        // Database barangan lengkap & general untuk kemasukan semua jenis universiti/kolej
+        // Dictionary for easy UI switches between Malay and English
+        const uiDict = {
+            bm: {
+                brand_subtitle: "SENARAI SEMAK UNIVERSAL UNI & KOLEJ",
+                header_badge: "🏫 Panduan Am Pendaftaran & Kemasukan Kampus",
+                header_title: "Dah Sedia Melangkah Ke Menara Gading? 🧳",
+                header_desc: "Checklist universal yang boleh disesuaikan mengikut bagasi fizikal anda. Sesuai untuk semua universiti, kolej, matrikulasi dan politeknik.",
+                progress_title: "Jumlah Progres Bungkusan",
+                completed_text: "daripada",
+                completed_suffix: "barangan selesai dibungkus",
+                tab_checklist: "Senarai Semak (Checklist)",
+                tab_info: "Panduan & Tips (Info)",
+                add_item_title: "Tambah Barang Peribadi",
+                add_item_desc: "Sistem akan memasukkan barang tersendiri anda ke dalam senarai interaktif di bawah secara automatik mengikut lokasi isian beg pilihan anda.",
+                input_label_name: "Nama Barang Kustom",
+                input_placeholder_name: "Contoh: Seterika, Botol Tambahan, Ubat Alahan",
+                input_label_cat: "Kategori Utama",
+                input_label_loc: "Lokasi Isian Beg (Ikut Kaedah Packing)",
+                input_label_priority: "Tahap Kepentingan",
+                btn_add: "Masukkan ke Senarai Semak",
+                priority_wajib: "🚨 Wajib",
+                priority_pilihan: "💡 Pilihan",
+                sort_title: "Susunan Senarai:",
+                sort_cat: "📁 Kategori Barang",
+                sort_loc: "🧳 Lokasi Packing (Beg)",
+                search_placeholder: "Cari barangan...",
+                filter_all: "Semua",
+                filter_active: "Belum Bungkus",
+                filter_completed: "Dah Bungkus",
+                toast_added: "Berjaya ditambah",
+                toast_deleted: "Dipadam",
+                toast_checked: "Selesai dibungkus",
+                toast_reset: "Semua senarai dibersihkan!",
+                toast_lang: "Bahasa ditukar ke",
+                reset_btn_text: "Reset Progres",
+                toast_warn_empty: "Masukkan nama barang anda!",
+                status_msg_0: "Mari mulakan mengemas! 🚀",
+                status_msg_low: "Sikit-sikit, lama-lama siap! Teruskan. 👍",
+                status_msg_mid: "Separuh jalan dah! Hebat kerja anda. 💪",
+                status_msg_high: "Sikit lagi! Dah nak siap sepenuhnya! 🎒",
+                status_msg_full: "Semua siap dibungkus! Selamat melangkah ke Universiti/Kolej! 🎉"
+            },
+            en: {
+                brand_subtitle: "UNIVERSAL UNI & COLLEGE CHECKLIST",
+                header_badge: "🏫 General Campus Registration & Entry Guide",
+                header_title: "Ready to Step Into University? 🧳",
+                header_desc: "A universal customizable checklist matching your physical luggage. Perfect for all universities, colleges, matriculation, and polytechnics.",
+                progress_title: "Overall Packing Progress",
+                completed_text: "of",
+                completed_suffix: "items packed successfully",
+                tab_checklist: "Checklist",
+                tab_info: "Guides & Tips (Info)",
+                add_item_title: "Add Personal Item",
+                add_item_desc: "The system will automatically insert your custom item into the interactive list below based on your selected luggage location.",
+                input_label_name: "Custom Item Name",
+                input_placeholder_name: "Example: Iron, Extra Bottle, Allergy Meds",
+                input_label_cat: "Main Category",
+                input_label_loc: "Bag Packing Location (Method)",
+                input_label_priority: "Importance Level",
+                btn_add: "Add to Checklist",
+                priority_wajib: "🚨 Mandatory",
+                priority_pilihan: "💡 Optional",
+                sort_title: "List Sorting:",
+                sort_cat: "📁 Item Category",
+                sort_loc: "🧳 Packing Location (Bag)",
+                search_placeholder: "Search items...",
+                filter_all: "All",
+                filter_active: "Unpacked",
+                filter_completed: "Packed",
+                toast_added: "Successfully added",
+                toast_deleted: "Deleted",
+                toast_checked: "Packed",
+                toast_reset: "All progress reset!",
+                toast_lang: "Language changed to",
+                reset_btn_text: "Reset Progress",
+                toast_warn_empty: "Please enter item name!",
+                status_msg_0: "Let's start packing! 🚀",
+                status_msg_low: "Step by step, you can do it! Keep going. 👍",
+                status_msg_mid: "Halfway there! Great job. 💪",
+                status_msg_high: "Almost there! Almost fully packed! 🎒",
+                status_msg_full: "All packed! Have a great journey to Uni/College! 🎉"
+            }
+        };
+
+        // Complete database with BM and EN translations
         const defaultChecklist = [
             // DOKUMEN / BEG DAFTAR
-            { id: "gdoc-1", category: "dokumen", packingLocation: "beg_daftar", name: "Surat Tawaran Kemasukan Asal & Salinan", checked: false, tag: "Wajib", desc: "Sediakan surat asal berserta beberapa salinan fizikal." },
-            { id: "gdoc-2", category: "dokumen", packingLocation: "beg_daftar", name: "Sijil Asal & Salinan Keputusan Akademik (SPM/STPM/Dip)", checked: false, tag: "Wajib", desc: "Penting untuk pengesahan pendaftaran fizikal oleh pihak pengurusan kolej." },
-            { id: "gdoc-3", category: "dokumen", packingLocation: "beg_daftar", name: "Salinan Kad Pengenalan Pelajar & Ibu Bapa/Waris", checked: false, tag: "Wajib", desc: "Sediakan sekurang-kurangnya 3 salinan disahkan." },
-            { id: "gdoc-4", category: "dokumen", packingLocation: "beg_daftar", name: "Gambar Ukuran Pasport", checked: false, tag: "Wajib", desc: "Sediakan 4-8 keping berlatarbelakangkan warna yang diminta untuk kad matrik/profil." },
-            { id: "gdoc-5", category: "dokumen", packingLocation: "beg_daftar", name: "Salinan Sijil Kelahiran (Asal & Salinan)", checked: false, tag: "Wajib", desc: "Sentiasa bawa bersama untuk tujuan semakan kad pengenalan." },
-            { id: "gdoc-6", category: "dokumen", packingLocation: "beg_daftar", name: "Penyata Akaun Bank / Salinan Buku Akaun Aktif", checked: false, tag: "Wajib", desc: "Wajib untuk kegunaan pengkreditan elaun, pinjaman (PTPTN) atau biasiswa." },
-            { id: "gdoc-7", category: "dokumen", packingLocation: "beg_daftar", name: "Borang Pemeriksaan Kesihatan & Laporan X-Ray", checked: false, tag: "Wajib", desc: "Pastikan laporan kesihatan lengkap dan disahkan oleh doktor bertauliah sebelum masuk." },
-            { id: "gdoc-8", category: "dokumen", packingLocation: "beg_daftar", name: "Fail Khas Kalis Air Berzip (Document Keeper)", checked: false, tag: "Wajib", desc: "Menghimpunkan semua dokumen penting di atas dalam satu tempat supaya tidak basah atau renyuk." },
-            { id: "gdoc-9", category: "dokumen", packingLocation: "beg_daftar", name: "Slip Pembayaran Yuran Pendaftaran Universiti", checked: false, tag: "Wajib", desc: "Bawa bukti resit pembayaran yuran yang telah disahkan pihak bank/transaksi atas talian." },
+            { 
+                id: "gdoc-1", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Surat Tawaran Kemasukan Asal & Salinan", 
+                name_en: "Original Offer Letter & Copies",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sediakan surat asal berserta beberapa salinan fizikal.",
+                desc_en: "Prepare the original letter along with multiple physical copies."
+            },
+            { 
+                id: "gdoc-2", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Sijil Asal & Salinan Keputusan Akademik (SPM/STPM/Dip/Asasi)", 
+                name_en: "Original Academic Results & Copies (SPM/STPM/Dip/Foundation)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Penting untuk pengesahan pendaftaran fizikal oleh pihak pengurusan.",
+                desc_en: "Essential for physical registration verification by campus management."
+            },
+            { 
+                id: "gdoc-3", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Salinan Kad Pengenalan Pelajar & Ibu Bapa/Waris", 
+                name_en: "Copies of Student & Parents/Guardian ID Cards",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sediakan sekurang-kurangnya 3 salinan disahkan.",
+                desc_en: "Prepare at least 3 certified copies."
+            },
+            { 
+                id: "gdoc-4", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Gambar Ukuran Pasport", 
+                name_en: "Passport-Sized Photographs",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sediakan 4-8 keping berlatarbelakangkan warna yang diminta untuk kad matrik/profil.",
+                desc_en: "Prepare 4-8 copies with requested background color for student card/profile."
+            },
+            { 
+                id: "gdoc-5", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Salinan Sijil Kelahiran (Asal & Salinan)", 
+                name_en: "Birth Certificate (Original & Copy)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sentiasa bawa bersama untuk tujuan semakan kad pengenalan.",
+                desc_en: "Always keep with you for identity card verification checks."
+            },
+            { 
+                id: "gdoc-6", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Penyata Akaun Bank / Salinan Buku Akaun Aktif", 
+                name_en: "Bank Account Statement / Active Savings Book Copy",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Wajib untuk kegunaan pengkreditan elaun, pinjaman (PTPTN) atau biasiswa.",
+                desc_en: "Required for allowance disbursement, study loan (PTPTN) or scholarship."
+            },
+            { 
+                id: "gdoc-7", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Borang Pemeriksaan Kesihatan & Laporan X-Ray", 
+                name_en: "Medical Check-up Form & X-Ray Report",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Pastikan laporan kesihatan lengkap dan disahkan oleh doktor bertauliah.",
+                desc_en: "Ensure health report is complete and verified by a registered medical doctor."
+            },
+            { 
+                id: "gdoc-8", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Fail Khas Kalis Air Berzip (Document Keeper)", 
+                name_en: "Waterproof Zipped Document File Case",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Menghimpunkan semua dokumen penting di atas dalam satu tempat supaya tidak basah.",
+                desc_en: "Gathers all vital documents in one place to prevent them from getting wet or folded."
+            },
+            { 
+                id: "gdoc-9", 
+                category: "dokumen", 
+                packingLocation: "beg_daftar", 
+                name_bm: "Slip Bukti Pembayaran Yuran Pendaftaran", 
+                name_en: "Registration Fees Payment Receipt Slip",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Bawa bukti resit pembayaran yuran yang telah disahkan pihak bank atau transaksi atas talian.",
+                desc_en: "Bring proof of fee payment certified by the bank or online transaction invoice."
+            },
 
             // PAKAIAN / LUGGAGE
-            { id: "gpak-1", category: "pakaian", packingLocation: "luggage", name: "Pakaian Kuliah Formal (Baju Kurung/Kemeja/Slack)", checked: false, tag: "Wajib", desc: "Sediakan sekurang-kurangnya 5-6 pasang untuk kegunaan kuliah sepanjang minggu." },
-            { id: "gpak-2", category: "pakaian", packingLocation: "luggage", name: "Pakaian Kasual Selesa (T-Shirt/Jeans/Trek)", checked: false, tag: "Wajib", desc: "Untuk pemakaian santai di blok asrama, kafe atau koperasi selepas kelas." },
-            { id: "gpak-3", category: "pakaian", packingLocation: "luggage", name: "Kasut Kelas / Kasut Kulit Formal", checked: false, tag: "Wajib", desc: "Wajib bertutup penuh dan mematuhi kod etika berpakaian kolej." },
-            { id: "gpak-4", category: "pakaian", packingLocation: "luggage", name: "Pakaian Sukan Lengkap", checked: false, tag: "Wajib", desc: "Digunakan ketika aktiviti kokurikulum petang atau riadah harian." },
-            { id: "gpak-5", category: "pakaian", packingLocation: "luggage", name: "Pakaian & Alatan Sembahyang (Sejadah/Kain Pelikat/Telekung)", checked: false, tag: "Wajib", desc: "Bawa sekurang-kurangnya 1-2 pasang untuk kegunaan harian." },
-            { id: "gpak-6", category: "pakaian", packingLocation: "luggage", name: "Stokin (Stokin Kelas & Sukan)", checked: false, tag: "Wajib", desc: "Bawa sekurang-kurangnya 4-5 pasang yang berwarna gelap/putih bersesuaian." },
-            { id: "gpak-7", category: "pakaian", packingLocation: "luggage", name: "Jam Tangan (Wristwatch)", checked: false, tag: "Wajib", desc: "Pengurusan masa yang baik amat penting ketika peperiksaan dan kelas tutorial." },
-            { id: "gpak-8", category: "pakaian", packingLocation: "luggage", name: "Kitab Agama / Al-Quran", checked: false, tag: "Pilihan", desc: "Buku rujukan rohani mengikut kepercayaan masing-masing." },
-            { id: "gpak-9", category: "pakaian", packingLocation: "luggage", name: "Pakaian Tidur Selesa", checked: false, tag: "Wajib", desc: "Sediakan 3-4 helai pakaian tidur kasual yang selesa." },
-            { id: "gpak-10", category: "pakaian", packingLocation: "luggage", name: "Cardigan / Jaket / Hoodie", checked: false, tag: "Wajib", desc: "Melindungi diri daripada hawa dingin di perpustakaan atau dewan kuliah yang sejuk." },
-            { id: "gpak-11", category: "pakaian", packingLocation: "luggage", name: "Selipar Outing / Kasut Kasual", checked: false, tag: "Wajib", desc: "Sesuai digunakan ketika ingin keluar membeli barang ke pekan berhampiran." },
-            { id: "gpak-12", category: "pakaian", packingLocation: "luggage", name: "Pakaian Dalam Secukupnya", checked: false, tag: "Wajib", desc: "Pastikan dibungkus rapi dan mencukupi sekurang-kurangnya untuk dua minggu." },
+            { 
+                id: "gpak-1", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Pakaian Kuliah Formal (Baju Kurung/Kemeja/Slack)", 
+                name_en: "Formal Lecture Clothes (Baju Kurung/Kemeja/Slacks)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sediakan sekurang-kurangnya 5-6 pasang untuk kegunaan kuliah sepanjang minggu.",
+                desc_en: "Prepare at least 5-6 sets for weekday lecture use."
+            },
+            { 
+                id: "gpak-2", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Pakaian Kasual Selesa (T-Shirt/Jeans/Trek)", 
+                name_en: "Comfortable Casual Wear (T-Shirts/Jeans/Track pants)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Untuk pemakaian santai di blok asrama, kafe atau koperasi selepas kelas.",
+                desc_en: "For relaxing at the hostel block, cafe, or store after classes."
+            },
+            { 
+                id: "gpak-3", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Kasut Kelas / Kasut Kulit Formal", 
+                name_en: "Lecture Shoes / Formal Leather Shoes",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Wajib bertutup penuh dan mematuhi kod etika berpakaian kolej.",
+                desc_en: "Must be fully closed and comply with the college dress code."
+            },
+            { 
+                id: "gpak-4", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Pakaian Sukan Lengkap", 
+                name_en: "Sports Attire (Full Set)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Digunakan ketika aktiviti kokurikulum petang atau riadah harian.",
+                desc_en: "Used during evening co-curricular activities or daily workouts."
+            },
+            { 
+                id: "gpak-5", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Pakaian & Alatan Sembahyang (Sejadah/Kain Pelikat/Telekung/Kitab)", 
+                name_en: "Prayer Clothes & Items (Sejadah/Pelikat/Telekung/Holy Books)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Bawa sekurang-kurangnya 1-2 pasang untuk kegunaan ibadat harian.",
+                desc_en: "Bring at least 1-2 sets for daily worship needs."
+            },
+            { 
+                id: "gpak-6", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Stokin (Stokin Kelas & Sukan)", 
+                name_en: "Socks (Class & Sports Socks)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Bawa sekurang-kurangnya 4-5 pasang yang berwarna gelap/putih bersesuaian.",
+                desc_en: "Bring at least 4-5 pairs of suitable dark/white socks."
+            },
+            { 
+                id: "gpak-7", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Jam Tangan (Wristwatch)", 
+                name_en: "Wristwatch",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Pengurusan masa yang baik amat penting ketika peperiksaan dan kelas tutorial.",
+                desc_en: "Good time management is extremely important during exams and tutorial classes."
+            },
+            { 
+                id: "gpak-8", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Al-Quran / Kitab Agama / Buku Doa", 
+                name_en: "Al-Quran / Holy Book / Prayer Guide Book",
+                checked: false, 
+                tag: "Pilihan", 
+                desc_bm: "Rujukan rohani harian mengikut kepercayaan masing-masing.",
+                desc_en: "Daily spiritual reference according to individual beliefs."
+            },
+            { 
+                id: "gpak-9", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Pakaian Tidur Selesa", 
+                name_en: "Comfortable Sleepwear",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sediakan 3-4 helai pakaian tidur kasual yang selesa.",
+                desc_en: "Prepare 3-4 comfortable casual sleeping clothes."
+            },
+            { 
+                id: "gpak-10", 
+                category: "pakaian", 
+                packingLocation: "luggage", 
+                name_bm: "Cardigan / Jaket / Hoodie", 
+                name_en: "Cardigan / Jacket / Hoodie",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Melindungi diri daripada hawa dingin di perpustakaan atau dewan kuliah.",
+                desc_en: "Protects you from cold drafts in libraries or air-conditioned lecture halls."
+            },
 
             // PERALATAN BELAJAR & GAJET
-            { id: "ggad-1", category: "gadget", packingLocation: "beg_laptop", name: "Laptop & Pengecas Laptop", checked: false, tag: "Wajib", desc: "Keperluan primer untuk membuat draf penulisan tesis, tugasan projek, kuiz, dan peperiksaan." },
-            { id: "ggad-2", category: "gadget", packingLocation: "guni", name: "Extension Plug Beriktiraf Keselamatan (SIRIM)", checked: false, tag: "Wajib", desc: "PENTING: Pastikan mempunyai label keselamatan bagi mengelakkan kejadian tidak diingini." },
-            { id: "ggad-3", category: "gadget", packingLocation: "beg_kelas", name: "Alat Tulis Asas Lengkap", checked: false, tag: "Wajib", desc: "Pen merah/biru/hitam, pensel mekanikal, pemadam, pembaris, pengorek." },
-            { id: "ggad-4", category: "gadget", packingLocation: "beg_kelas", name: "Kalkulator Saintifik", checked: false, tag: "Wajib", desc: "Sangat penting bagi kelas yang memerlukan pengiraan numerikal." },
-            { id: "ggad-5", category: "gadget", packingLocation: "beg_kelas", name: "Powerbank & Pengecas Telefon Pintar", checked: false, tag: "Wajib", desc: "Untuk mengecas peranti mudah alih sekiranya tiada plug berdekatan dewan kuliah." },
-            { id: "ggad-6", category: "gadget", packingLocation: "beg_kelas", name: "Payung Lipat Ringan (Pocket Umbrella)", checked: false, tag: "Wajib", desc: "Pelindung daripada panas terik atau hujan lebat semasa berjalan kaki ke kelas." },
-            { id: "ggad-7", category: "gadget", packingLocation: "beg_kelas", name: "Stapler & Isi Stapler", checked: false, tag: "Wajib", desc: "Digunakan bagi mengemas helaian jawapan kerja rumah sebelum diserahkan." },
-            { id: "ggad-8", category: "gadget", packingLocation: "beg_kelas", name: "Highlighter (Pen Penyerlah)", checked: false, tag: "Wajib", desc: "Menandakan konsep rujukan utama pada modul nota fotostat." },
-            { id: "ggad-9", category: "gadget", packingLocation: "beg_kelas", name: "Kertas Kajang (Exam Pad) & Kertas A4 Kosong", checked: false, tag: "Wajib", desc: "Untuk membuat draf jawapan kuliah atau nota peta minda." },
-            { id: "ggad-10", category: "gadget", packingLocation: "beg_kelas", name: "Buku Nota Bersaiz Kecil (Notebook)", checked: false, tag: "Wajib", desc: "Untuk menyalin jadual ringkas harian atau tugasan pensyarah." },
+            { 
+                id: "ggad-1", 
+                category: "gadget", 
+                packingLocation: "beg_laptop", 
+                name_bm: "Laptop & Pengecas Laptop", 
+                name_en: "Laptop & Laptop Charger",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Keperluan utama untuk membuat tugasan, projek, kuiz, dan peperiksaan.",
+                desc_en: "Core necessity for typing assignments, projects, quizzes, and exams."
+            },
+            { 
+                id: "ggad-2", 
+                category: "gadget", 
+                packingLocation: "guni", 
+                name_bm: "Extension Plug Beriktiraf Keselamatan (SIRIM)", 
+                name_en: "Safety-Certified Power Extension (SIRIM)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sangat penting kerana punca kuasa di dalam bilik asrama biasanya sangat terhad.",
+                desc_en: "Extremely vital as power outlets in hostel rooms are usually very limited."
+            },
+            { 
+                id: "ggad-3", 
+                category: "gadget", 
+                packingLocation: "beg_kelas", 
+                name_bm: "Alat Tulis Asas Lengkap", 
+                name_en: "Complete Basic Stationery Set",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Pen merah/biru/hitam, pensel mekanikal, pemadam, pembaris, pengorek.",
+                desc_en: "Red/blue/black pens, mechanical pencil, eraser, ruler, sharpener."
+            },
+            { 
+                id: "ggad-4", 
+                category: "gadget", 
+                packingLocation: "beg_kelas", 
+                name_bm: "Kalkulator Saintifik", 
+                name_en: "Scientific Calculator",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sangat penting bagi kelas yang memerlukan pengiraan numerikal.",
+                desc_en: "Crucial for classes requiring numerical calculations."
+            },
+            { 
+                id: "ggad-5", 
+                category: "gadget", 
+                packingLocation: "beg_kelas", 
+                name_bm: "Powerbank & Pengecas Telefon Pintar", 
+                name_en: "Powerbank & Smartphone Charger",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Untuk mengecas peranti mudah alih sekiranya tiada plug berdekatan.",
+                desc_en: "To charge mobile devices when no plug is nearby."
+            },
+            { 
+                id: "ggad-6", 
+                category: "gadget", 
+                packingLocation: "beg_kelas", 
+                name_bm: "Payung Lipat Ringan (Pocket Umbrella)", 
+                name_en: "Lightweight Folding Umbrella",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Pelindung daripada panas terik atau hujan lebat semasa berjalan kaki ke kelas.",
+                desc_en: "Protects you from scorching sun or heavy rain when walking to class."
+            },
 
             // DORM & TIDUR
-            { id: "gdorm-1", category: "dorm", packingLocation: "guni", name: "Set Cadar & Sarung Bantal (Saiz Single)", checked: false, tag: "Wajib", desc: "Bawa 2 set lengkap sebagai persediaan pertukaran ketika dicuci." },
-            { id: "gdorm-2", category: "dorm", packingLocation: "guni", name: "Selimut Tebal (Blanket / Comforter)", checked: false, tag: "Wajib", desc: "Sangat penting sekiranya bilik asrama sejuk di waktu malam." },
-            { id: "gdorm-3", category: "dorm", packingLocation: "guni", name: "Mangga Kunci (Padlock) untuk Loker", checked: false, tag: "Wajib", desc: "Gunakan jenis kunci kukuh untuk memastikan loker pakaian selamat dikunci." },
-            { id: "gdorm-4", category: "dorm", packingLocation: "guni", name: "Kain Buruk / Wet Wipes / Tisu Basah", checked: false, tag: "Wajib", desc: "Untuk proses pembersihan meja dan katil yang berhabuk tebal pada hari kemasukan." },
-            { id: "gdorm-5", category: "dorm", packingLocation: "guni", name: "Penyangkut Baju (Hanger) & Sepit Baju", checked: false, tag: "Wajib", desc: "Sediakan sekurang-kurangnya 1-2 dozen hanger untuk mengeringkan pakaian basah." },
-            { id: "gdorm-6", category: "dorm", packingLocation: "guni", name: "Kipas Meja Kecil (Jenis USB / Bateri)", checked: false, tag: "Pilihan", desc: "Penyelamat ketika bilik asrama agak panas di waktu siang." },
-            { id: "gdorm-7", category: "dorm", packingLocation: "guni", name: "Beg Dobi (Laundry Bag / Bakul Boleh Lipat)", checked: false, tag: "Wajib", desc: "Memudahkan pengangkutan kain kotor ke bilik mesin basuh layan diri asrama." },
-            { id: "gdorm-8", category: "dorm", packingLocation: "guni", name: "Penyangkut S-Hook & Cermin Kecil", checked: false, tag: "Pilihan", desc: "Kemudahan tambahan untuk meletakkan barang peribadi dalam almari." },
+            { 
+                id: "gdorm-1", 
+                category: "dorm", 
+                packingLocation: "guni", 
+                name_bm: "Set Cadar & Sarung Bantal (Saiz Single)", 
+                name_en: "Bedsheet & Pillowcase Set (Single Size)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Bawa 2 set lengkap sebagai persediaan pertukaran ketika dicuci.",
+                desc_en: "Bring 2 full sets as spares when one is in the laundry."
+            },
+            { 
+                id: "gdorm-2", 
+                category: "dorm", 
+                packingLocation: "guni", 
+                name_bm: "Selimut Tebal (Blanket / Comforter)", 
+                name_en: "Thick Blanket / Comforter",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sangat penting sekiranya bilik asrama sejuk di waktu malam.",
+                desc_en: "Highly important if the hostel room gets cold at night."
+            },
+            { 
+                id: "gdorm-3", 
+                category: "dorm", 
+                packingLocation: "guni", 
+                name_bm: "Mangga Kunci (Padlock) untuk Loker", 
+                name_en: "Padlock for Safety Locker",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Gunakan jenis kunci kukuh untuk memastikan loker pakaian selamat dikunci.",
+                desc_en: "Use a sturdy lock to keep your clothing locker securely locked."
+            },
+            { 
+                id: "gdorm-4", 
+                category: "dorm", 
+                packingLocation: "guni", 
+                name_bm: "Kain Buruk / Wet Wipes / Tisu Basah", 
+                name_en: "Rags / Wet Wipes / Tissues",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Untuk proses pembersihan meja dan katil yang berhabuk tebal pada hari kemasukan.",
+                desc_en: "For cleaning dusty tables and beds on moving-in day."
+            },
+            { 
+                id: "gdorm-5", 
+                category: "dorm", 
+                packingLocation: "guni", 
+                name_bm: "Penyangkut Baju (Hanger) & Sepit Baju", 
+                name_en: "Clothes Hangers & Pegs",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Sediakan sekurang-kurangnya 1-2 dozen hanger untuk mengeringkan pakaian basah.",
+                desc_en: "Prepare at least 1-2 dozen hangers to dry wet clothes."
+            },
+            { 
+                id: "gdorm-6", 
+                category: "dorm", 
+                packingLocation: "guni", 
+                name_bm: "Kipas Meja Kecil (Jenis USB / Bateri)", 
+                name_en: "Mini Table Fan (USB / Battery)",
+                checked: false, 
+                tag: "Pilihan", 
+                desc_bm: "Penyelamat ketika bilik asrama agak panas di waktu siang.",
+                desc_en: "A lifesaver when the hostel room gets warm during midday."
+            },
 
             // MANDIAN & TOILETRIES
-            { id: "gtoi-1", category: "toiletries", packingLocation: "baldi", name: "Baldi Kecil / Shower Caddy (Beg Mandian)", checked: false, tag: "Wajib", desc: "Wajib ada bagi mengisi sabun mandi, berus gigi dan syampu ke tandas berkongsi." },
-            { id: "gtoi-2", category: "toiletries", packingLocation: "baldi", name: "Sabun Mandi, Syampu, Ubat Gigi & Berus Gigi", checked: false, tag: "Wajib", desc: "Keperluan harian primer." },
-            { id: "gtoi-3", category: "toiletries", packingLocation: "baldi", name: "Sabun Basuh Baju (Cecair / Serbuk)", checked: false, tag: "Wajib", desc: "Membasuh pakaian di asrama." },
-            { id: "gtoi-4", category: "toiletries", packingLocation: "baldi", name: "Pencuci Muka (Cleanser)", checked: false, tag: "Wajib", desc: "Menjaga kebersihan kulit muka setelah penat mengikuti aktiviti pendaftaran." },
-            { id: "gtoi-5", category: "toiletries", packingLocation: "baldi", name: "Pisau Cukur & Krim Pencukur", checked: false, tag: "Wajib", desc: "Merapikan rerambut di wajah demi kekemasan tatatertib diri." },
+            { 
+                id: "gtoi-1", 
+                category: "toiletries", 
+                packingLocation: "baldi", 
+                name_bm: "Baldi Kecil / Shower Caddy (Beg Mandian)", 
+                name_en: "Small Bucket / Shower Caddy Bag",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Wajib ada bagi mengisi sabun mandi, berus gigi dan syampu ke tandas berkongsi.",
+                desc_en: "Must-have to carry body wash, toothbrush, and shampoo to shared bathrooms."
+            },
+            { 
+                id: "gtoi-2", 
+                category: "toiletries", 
+                packingLocation: "baldi", 
+                name_bm: "Sabun, Syampu, Ubat Gigi & Berus Gigi", 
+                name_en: "Soap, Shampoo, Toothpaste & Toothbrush",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Kelengkapan kebersihan diri harian primer.",
+                desc_en: "Primary daily personal hygiene necessities."
+            },
+            { 
+                id: "gtoi-3", 
+                category: "toiletries", 
+                packingLocation: "baldi", 
+                name_bm: "Sabun Basuh Baju (Cecair / Serbuk)", 
+                name_en: "Laundry Detergent (Liquid / Powder)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Membasuh pakaian sendiri di asrama.",
+                desc_en: "Washing your own clothes at the hostel laundry."
+            },
 
             // KESIHATAN & UBAT
-            { id: "gkes-1", category: "kesihatan", packingLocation: "luggage", name: "Ubat Demam / Paracetamol (Panadol)", checked: false, tag: "Wajib", desc: "Rawatan kendiri segera jika diserang sakit kepala atau demam." },
-            { id: "gkes-2", category: "kesihatan", packingLocation: "luggage", name: "Ubat Sakit Perut & Cirit-Birit", checked: false, tag: "Pilihan", desc: "Berguna sekiranya perut sensitif dengan perubahan bekalan air atau masakan luar." },
-            { id: "gkes-3", category: "kesihatan", packingLocation: "luggage", name: "Minyak Angin / Minyak Gamat & Plaster Luka", checked: false, tag: "Wajib", desc: "Menangani luka calar atau mengurangkan sengal sendi kaki." },
+            { 
+                id: "gkes-1", 
+                category: "kesihatan", 
+                packingLocation: "luggage", 
+                name_bm: "Ubat Demam / Paracetamol (Panadol)", 
+                name_en: "Fever Relief / Paracetamol (Panadol)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Rawatan kendiri segera jika diserang sakit kepala atau demam.",
+                desc_en: "Immediate self-treatment if hit by a sudden headache or fever."
+            },
+            { 
+                id: "gkes-2", 
+                category: "kesihatan", 
+                packingLocation: "luggage", 
+                name_bm: "Ubat Sakit Perut & Cirit-Birit", 
+                name_en: "Stomach Ache & Diarrhea Meds",
+                checked: false, 
+                tag: "Pilihan", 
+                desc_bm: "Berguna sekiranya perut sensitif dengan perubahan makanan.",
+                desc_en: "Handy if your stomach is sensitive to changes in food."
+            },
+            { 
+                id: "gkes-3", 
+                category: "kesihatan", 
+                packingLocation: "luggage", 
+                name_bm: "Minyak Angin & Plaster Luka", 
+                name_en: "Medicated Oil & Plasters",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Menangani luka calar atau mengurangkan pening kepala.",
+                desc_en: "Treats small cuts or helps soothe minor headaches."
+            },
 
             // DAPUR
-            { id: "gdap-1", category: "dapur", packingLocation: "guni", name: "Pinggan, Mangkuk & Cawan Plastik Tebal", checked: false, tag: "Wajib", desc: "Pilih daripada bahan tidak mudah pecah untuk keselamatan asrama." },
-            { id: "gdap-2", category: "dapur", packingLocation: "guni", name: "Sudu & Garfu (Masing-masing 2 Pasang)", checked: false, tag: "Wajib", desc: "Keperluan penting untuk menikmati makanan ringkas di bilik." },
-            { id: "gdap-3", category: "dapur", packingLocation: "guni", name: "Cecair Pencuci Pinggan & Span Bersih", checked: false, tag: "Wajib", desc: "Menjaga kebersihan bekas makan minum asrama bagi menggelakkan serangga perosak." },
-            { id: "gdap-4", category: "dapur", packingLocation: "beg_kelas", name: "Botol Air Termos (Tumbler)", checked: false, tag: "Wajib", desc: "Mengisi bekalan air bersih untuk diminum ketika berada di kuliah." },
-            { id: "gdap-5", category: "dapur", packingLocation: "guni", name: "Biskut / Snek Ringkas / Minuman 3-in-1", checked: false, tag: "Pilihan", desc: "Sajian ringkas pengisi perut ketika sedang mengulang kaji pelajaran lewat malam." }
+            { 
+                id: "gdap-1", 
+                category: "dapur", 
+                packingLocation: "guni", 
+                name_bm: "Pinggan, Mangkuk & Cawan Plastik Tebal", 
+                name_en: "Thick Plastic Plates, Bowls & Cups",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Pilih daripada bahan tidak mudah pecah untuk asrama.",
+                desc_en: "Choose non-breakable materials for hostel safety."
+            },
+            { 
+                id: "gdap-2", 
+                category: "dapur", 
+                packingLocation: "guni", 
+                name_bm: "Sudu & Garfu (Masing-masing 2 Pasang)", 
+                name_en: "Spoons & Forks (2 Pairs Each)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Keperluan penting untuk menikmati makanan di bilik.",
+                desc_en: "Essential utensils for enjoying meals in your dorm room."
+            },
+            { 
+                id: "gdap-3", 
+                category: "dapur", 
+                packingLocation: "guni", 
+                name_bm: "Cecair Pencuci Pinggan & Span Bersih", 
+                name_en: "Dishwashing Liquid & Clean Sponge",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Menjaga kebersihan bekas makan minum asrama bagi menggelakkan serangga.",
+                desc_en: "Keeps your utensils clean to avoid pests in your room."
+            },
+            { 
+                id: "gdap-4", 
+                category: "dapur", 
+                packingLocation: "beg_kelas", 
+                name_bm: "Botol Air Termos (Tumbler)", 
+                name_en: "Thermal Water Bottle (Tumbler)",
+                checked: false, 
+                tag: "Wajib", 
+                desc_bm: "Mengisi bekalan air bersih untuk dibawa ke dewan kuliah.",
+                desc_en: "Holds clean drinking water to take to lecture halls."
+            }
         ];
 
-        let items = [];
-        let currentFilter = 'all'; // all, active, completed
-        let currentViewMode = 'category'; // category, location
-        let currentMobileTab = 'checklist'; // checklist, info
-
         const categoryMeta = {
-            dokumen: { title: "📄 Dokumen & Pentadbiran Penting", color: "from-sky-500 to-blue-600 dark:from-sky-900 dark:to-blue-950", border: "border-blue-100 dark:border-blue-900/30" },
-            pakaian: { title: "👕 Pakaian & Penampilan Diri", color: "from-purple-500 to-indigo-600 dark:from-purple-900 dark:to-indigo-950", border: "border-indigo-100 dark:border-indigo-900/30" },
-            gadget: { title: "💻 Belajar & Gajet Elektronik", color: "from-emerald-500 to-teal-600 dark:from-emerald-900 dark:to-teal-950", border: "border-teal-100 dark:border-teal-900/30" },
-            dorm: { title: "🛏️ Kelengkapan Bilik & Dorm", color: "from-amber-500 to-orange-600 dark:from-amber-900 dark:to-orange-950", border: "border-orange-100 dark:border-orange-900/30" },
-            toiletries: { title: "🧼 Kelengkapan Mandian & Dobi", color: "from-pink-500 to-rose-600 dark:from-pink-900 dark:to-rose-950", border: "border-rose-100 dark:border-rose-900/30" },
-            kesihatan: { title: "💊 Kesihatan & First Aid", color: "from-red-500 to-rose-600 dark:from-red-900 dark:to-rose-950", border: "border-red-100 dark:border-red-900/30" },
-            dapur: { title: "🍽️ Barangan Dapur & Snek", color: "from-violet-500 to-fuchsia-600 dark:from-violet-900 dark:to-fuchsia-950", border: "border-fuchsia-100 dark:border-fuchsia-900/30" }
+            dokumen: { 
+                title_bm: "📄 Dokumen & Pentadbiran Penting", 
+                title_en: "📄 Vital Documents & Admin",
+                color: "from-sky-500 to-blue-600 dark:from-sky-900 dark:to-blue-950", 
+                border: "border-blue-100 dark:border-blue-900/30" 
+            },
+            pakaian: { 
+                title_bm: "👕 Pakaian & Penampilan Diri", 
+                title_en: "👕 Apparel & Personal Appearance",
+                color: "from-purple-500 to-indigo-600 dark:from-purple-900 dark:to-indigo-950", 
+                border: "border-indigo-100 dark:border-indigo-900/30" 
+            },
+            gadget: { 
+                title_bm: "💻 Belajar & Gajet Elektronik", 
+                title_en: "💻 Study & Electronic Gadgets",
+                color: "from-emerald-500 to-teal-600 dark:from-emerald-900 dark:to-teal-950", 
+                border: "border-teal-100 dark:border-teal-900/30" 
+            },
+            dorm: { 
+                title_bm: "🛏️ Kelengkapan Bilik & Dorm", 
+                title_en: "🛏️ Room & Dorm Essentials",
+                color: "from-amber-500 to-orange-600 dark:from-amber-900 dark:to-orange-950", 
+                border: "border-orange-100 dark:border-orange-900/30" 
+            },
+            toiletries: { 
+                title_bm: "🧼 Kelengkapan Mandian & Dobi", 
+                title_en: "🧼 Toiletries & Laundry Kits",
+                color: "from-pink-500 to-rose-600 dark:from-pink-900 dark:to-rose-950", 
+                border: "border-rose-100 dark:border-rose-900/30" 
+            },
+            kesihatan: { 
+                title_bm: "💊 Kesihatan & First Aid", 
+                title_en: "💊 Health & First Aid",
+                color: "from-red-500 to-rose-600 dark:from-red-900 dark:to-rose-950", 
+                border: "border-red-100 dark:border-red-900/30" 
+            },
+            dapur: { 
+                title_bm: "🍽️ Barangan Dapur & Snek", 
+                title_en: "🍽️ Pantry Ware & Snacks",
+                color: "from-violet-500 to-fuchsia-600 dark:from-violet-900 dark:to-fuchsia-950", 
+                border: "border-fuchsia-100 dark:border-fuchsia-900/30" 
+            }
         };
 
         const locationMeta = {
-            beg_daftar: { title: "📂 Beg Daftar / Hand Carry (Dokumen)", color: "from-sky-600 to-blue-700 dark:from-sky-950 dark:to-blue-900", border: "border-blue-100 dark:border-blue-900/30" },
-            luggage: { title: "🧳 Luggage / Bagasi Besar (Pakaian & Ubat)", color: "from-purple-600 to-indigo-700 dark:from-purple-950 dark:to-indigo-900", border: "border-purple-100 dark:border-purple-900/30" },
-            beg_laptop: { title: "💻 Beg Laptop (Gajet Utama)", color: "from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-950", border: "border-slate-300 dark:border-slate-800" },
-            beg_kelas: { title: "🎒 Beg Ke Kelas (Alat Tulis & Buku)", color: "from-emerald-600 to-teal-600 dark:from-emerald-950 dark:to-teal-900", border: "border-emerald-100 dark:border-emerald-900/30" },
-            baldi: { title: "🪣 Baldi Mandian (Toiletries & Sabun)", color: "from-cyan-500 to-blue-500 dark:from-cyan-950 dark:to-blue-900", border: "border-cyan-100 dark:border-cyan-900/30" },
-            guni: { title: "📦 Beg Guni / Kotak Tambahan (Bilik & Dapur)", color: "from-amber-600 to-orange-600 dark:from-amber-950 dark:to-orange-900", border: "border-amber-100 dark:border-amber-900/30" }
+            beg_daftar: { 
+                title_bm: "📂 Beg Daftar / Hand Carry (Dokumen)", 
+                title_en: "📂 Registration Bag / Hand Carry",
+                color: "from-sky-600 to-blue-700 dark:from-sky-950 dark:to-blue-900", 
+                border: "border-blue-100 dark:border-blue-900/30" 
+            },
+            luggage: { 
+                title_bm: "🧳 Luggage / Bagasi Besar (Pakaian & Ubat)", 
+                title_en: "🧳 Main Luggage / Suitcase",
+                color: "from-purple-600 to-indigo-700 dark:from-purple-950 dark:to-indigo-900", 
+                border: "border-purple-100 dark:border-purple-900/30" 
+            },
+            beg_laptop: { 
+                title_bm: "💻 Beg Laptop (Gajet Utama)", 
+                title_en: "💻 Laptop Case (Gadget Center)",
+                color: "from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-950", 
+                border: "border-slate-300 dark:border-slate-800" 
+            },
+            beg_kelas: { 
+                title_bm: "🎒 Beg Ke Kelas (Alat Tulis & Buku)", 
+                title_en: "🎒 Classroom Backpack",
+                color: "from-emerald-600 to-teal-600 dark:from-emerald-950 dark:to-teal-900", 
+                border: "border-emerald-100 dark:border-emerald-900/30" 
+            },
+            baldi: { 
+                title_bm: "🪣 Baldi Mandian (Toiletries & Sabun)", 
+                title_en: "🪣 Shower Bucket / Toiletries Caddy",
+                color: "from-cyan-500 to-blue-500 dark:from-cyan-950 dark:to-blue-900", 
+                border: "border-cyan-100 dark:border-cyan-900/30" 
+            },
+            guni: { 
+                title_bm: "📦 Beg Guni / Kotak Tambahan", 
+                title_en: "📦 Storage Sacks & Utility Boxes",
+                color: "from-amber-600 to-orange-600 dark:from-amber-950 dark:to-orange-900", 
+                border: "border-amber-100 dark:border-amber-900/30" 
+            }
         };
 
-        // Initialize Theme Setup on page load
-        (function initTheme() {
+        // State control
+        let items = [];
+        let currentFilter = 'all'; 
+        let currentViewMode = 'category'; 
+        let currentMobileTab = 'checklist'; 
+        let currentLang = 'bm'; // Default is Malay
+
+        // Initialize Theme & Lang Engine
+        (function initApp() {
+            // Load theme preference
             const currentTheme = localStorage.getItem('uprep_theme') || 'system';
             applyTheme(currentTheme);
+
+            // Load language preference
+            const savedLang = localStorage.getItem('uprep_lang');
+            if (savedLang === 'bm' || savedLang === 'en') {
+                currentLang = savedLang;
+            } else {
+                currentLang = 'bm';
+            }
         })();
 
         window.onload = function() {
             loadData();
+            updateUILanguage();
             renderChecklist();
+            renderTips();
             updateProgress();
             syncThemeUI();
         };
 
         function loadData() {
-            const stored = localStorage.getItem('uprep_checklist_items_v2');
+            const stored = localStorage.getItem('uprep_universal_items_v1');
             if (stored) {
                 try {
                     items = JSON.parse(stored);
                     
-                    // Auto-sync mechanism to merge new default items to prevent data loss on existing users
+                    // Sync default items to avoid losing progress but adding any new template items
                     const existingIds = new Set(items.map(i => i.id));
                     let newlyAdded = false;
                     defaultChecklist.forEach(defItem => {
@@ -464,7 +952,7 @@
                         }
                     });
                     if (newlyAdded) {
-                        localStorage.setItem('uprep_checklist_items_v2', JSON.stringify(items));
+                        localStorage.setItem('uprep_universal_items_v1', JSON.stringify(items));
                     }
                 } catch (e) {
                     items = [...defaultChecklist];
@@ -475,11 +963,64 @@
         }
 
         function saveData() {
-            localStorage.setItem('uprep_checklist_items_v2', JSON.stringify(items));
+            localStorage.setItem('uprep_universal_items_v1', JSON.stringify(items));
             updateProgress();
         }
 
-        // Dark/Light Theme Switching Engine
+        // Language Toggle Controller
+        function toggleLanguage() {
+            currentLang = currentLang === 'bm' ? 'en' : 'bm';
+            localStorage.setItem('uprep_lang', currentLang);
+            
+            updateUILanguage();
+            renderChecklist();
+            renderTips();
+            updateProgress();
+            
+            showToast(`${uiDict[currentLang].toast_lang}: ${currentLang.toUpperCase()}`, 'fa-globe', 'text-brand-500');
+        }
+
+        // Update static UI Strings on page
+        function updateUILanguage() {
+            const dictionary = uiDict[currentLang];
+            
+            // Text values
+            document.getElementById('lang-btn-text').innerText = currentLang === 'bm' ? 'EN' : 'BM';
+            document.getElementById('navbar-subtitle').innerText = dictionary.brand_subtitle;
+            document.getElementById('header-badge').innerHTML = `<span class="w-2 h-2 bg-emerald-400 rounded-full animate-ping"></span> ${dictionary.header_badge}`;
+            document.getElementById('header-title').innerText = dictionary.header_title;
+            document.getElementById('header-desc').innerText = dictionary.header_desc;
+            document.getElementById('progress-title-text').innerText = dictionary.progress_title;
+            document.getElementById('completed-text-span').innerText = dictionary.completed_text;
+            document.getElementById('completed-suffix-span').innerText = dictionary.completed_suffix;
+            document.getElementById('reset-btn-label').innerText = dictionary.reset_btn_text;
+
+            // Mobile Tabs
+            document.getElementById('tab-btn-checklist').innerHTML = `<i class="fa-solid fa-list-check mr-1.5"></i>${dictionary.tab_checklist}`;
+            document.getElementById('tab-btn-info').innerHTML = `<i class="fa-solid fa-lightbulb mr-1.5"></i>${dictionary.tab_info}`;
+
+            // Add Custom Item section
+            document.getElementById('add-item-title').innerHTML = `<i class="fa-solid fa-circle-plus text-brand-500 text-lg"></i> <span>${dictionary.add_item_title}</span>`;
+            document.getElementById('add-item-desc').innerText = dictionary.add_item_desc;
+            document.getElementById('input-label-name').innerText = dictionary.input_label_name;
+            document.getElementById('custom-item-name').placeholder = dictionary.input_placeholder_name;
+            document.getElementById('input-label-cat').innerText = dictionary.input_label_cat;
+            document.getElementById('input-label-loc').innerText = dictionary.input_label_loc;
+            document.getElementById('input-label-priority').innerText = dictionary.input_label_priority;
+            document.getElementById('priority-label-wajib').innerText = dictionary.priority_wajib;
+            document.getElementById('priority-label-pilihan').innerText = dictionary.priority_pilihan;
+            document.getElementById('btn-add-item').innerHTML = `<i class="fa-solid fa-plus"></i> <span>${dictionary.btn_add}</span>`;
+
+            // Sort & Filter section
+            document.getElementById('sort-title-text').innerHTML = `<i class="fa-solid fa-sliders text-brand-500"></i> <span>${dictionary.sort_title}</span>`;
+            document.getElementById('btn-view-category').innerText = dictionary.sort_cat;
+            document.getElementById('btn-view-location').innerText = dictionary.sort_loc;
+            document.getElementById('search-input').placeholder = dictionary.search_placeholder;
+            document.getElementById('btn-filter-all').innerText = dictionary.filter_all;
+            document.getElementById('btn-filter-active').innerText = dictionary.filter_active;
+            document.getElementById('btn-filter-completed').innerText = dictionary.filter_completed;
+        }
+
         function cycleTheme() {
             const themes = ['light', 'dark', 'system'];
             let current = localStorage.getItem('uprep_theme') || 'system';
@@ -490,7 +1031,8 @@
             applyTheme(nextTheme);
             syncThemeUI();
             
-            showToast(`Tema ditukar kepada: ${nextTheme.toUpperCase()}`, 'fa-circle-half-stroke', 'text-brand-500');
+            const msg = currentLang === 'bm' ? `Tema ditukar: ${nextTheme.toUpperCase()}` : `Theme changed: ${nextTheme.toUpperCase()}`;
+            showToast(msg, 'fa-circle-half-stroke', 'text-brand-500');
         }
 
         function applyTheme(theme) {
@@ -519,7 +1061,6 @@
             }
         }
 
-        // Handle System Preference Theme Changes dynamically
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
             const currentTheme = localStorage.getItem('uprep_theme') || 'system';
             if (currentTheme === 'system') {
@@ -527,7 +1068,7 @@
             }
         });
 
-        // Switch between Checklist and Info tab on small screens
+        // Mobile Switch Tab logic
         function setMobileTab(tab) {
             currentMobileTab = tab;
             const btnChecklist = document.getElementById('tab-btn-checklist');
@@ -547,7 +1088,6 @@
                 
                 colChecklist.classList.add('hidden');
                 colInfo.classList.remove('hidden');
-                // Ensure tailwind applies display correctly if viewport is resized back to desktop
                 colInfo.classList.add('block'); 
             }
         }
@@ -567,7 +1107,6 @@
             renderChecklist();
         }
 
-        // Render elements based on current state & options
         function renderChecklist() {
             const container = document.getElementById('checklist-container');
             container.innerHTML = '';
@@ -575,15 +1114,18 @@
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
             const groupMeta = currentViewMode === 'category' ? categoryMeta : locationMeta;
 
-            // Initialize grouped structure
+            // Initialize grouped container
             const grouped = {};
             Object.keys(groupMeta).forEach(key => {
                 grouped[key] = [];
             });
 
-            // Filter and distribute items
+            // Filter checklist items
             items.forEach(item => {
-                const matchesSearch = item.name.toLowerCase().includes(searchTerm) || (item.desc && item.desc.toLowerCase().includes(searchTerm));
+                const name = currentLang === 'bm' ? (item.name_bm || item.name_en) : (item.name_en || item.name_bm);
+                const desc = currentLang === 'bm' ? (item.desc_bm || item.desc_en) : (item.desc_en || item.desc_bm);
+
+                const matchesSearch = name.toLowerCase().includes(searchTerm) || (desc && desc.toLowerCase().includes(searchTerm));
                 
                 let matchesFilter = true;
                 if (currentFilter === 'active') matchesFilter = !item.checked;
@@ -602,14 +1144,15 @@
 
             let groupsRenderedCount = 0;
 
-            // Map grouped arrays into HTML Blocks
+            // Map and build group card containers
             Object.keys(grouped).forEach(groupKey => {
                 const groupItems = grouped[groupKey];
                 if (!groupItems || groupItems.length === 0) return;
 
                 groupsRenderedCount++;
-                const meta = groupMeta[groupKey] || { title: "Lain-Lain", color: "from-slate-500 to-slate-600 dark:from-slate-800 dark:to-slate-900", border: "border-slate-100 dark:border-slate-800" };
-                
+                const meta = groupMeta[groupKey] || { title_bm: "Lain-Lain", title_en: "Others", color: "from-slate-500 to-slate-600 dark:from-slate-800 dark:to-slate-900", border: "border-slate-100 dark:border-slate-800" };
+                const groupTitle = currentLang === 'bm' ? meta.title_bm : meta.title_en;
+
                 const totalInGroup = groupItems.length;
                 const completedInGroup = groupItems.filter(i => i.checked).length;
                 const progressInGroup = Math.round((completedInGroup / totalInGroup) * 100) || 0;
@@ -623,31 +1166,37 @@
                     const checkedStyle = item.checked ? 'bg-slate-50/50 dark:bg-slate-950/30' : 'bg-white dark:bg-slate-900';
                     const titleStrike = item.checked ? 'line-through text-slate-400 dark:text-slate-600 font-light' : 'text-slate-800 dark:text-slate-100 font-semibold';
                     const checkIcon = item.checked ? 'fa-square-check text-brand-600 dark:text-brand-500' : 'fa-square text-slate-300 dark:text-slate-700';
+                    
+                    const itemName = currentLang === 'bm' ? (item.name_bm || item.name_en) : (item.name_en || item.name_bm);
+                    const itemDesc = currentLang === 'bm' ? (item.desc_bm || item.desc_en) : (item.desc_en || item.desc_bm);
+                    const itemTagTrans = item.tag === 'Wajib' ? (currentLang === 'bm' ? 'Wajib' : 'Required') : (currentLang === 'bm' ? 'Pilihan' : 'Optional');
 
                     itemsHtml += `
                         <div class="p-4 border-b border-slate-100 dark:border-slate-800/60 last:border-b-0 flex items-start space-x-3.5 hover:bg-slate-50/80 dark:hover:bg-slate-950/40 transition-all ${checkedStyle}">
-                            <button onclick="toggleItem('${item.id}')" class="mt-0.5 text-2xl flex-shrink-0 transition-transform active:scale-90 focus:outline-none" title="Tanda kemas">
+                            <button onclick="toggleItem('${item.id}')" class="mt-0.5 text-2xl flex-shrink-0 transition-transform active:scale-90 focus:outline-none" title="${currentLang === 'bm' ? 'Tanda kemas' : 'Mark packed'}">
                                 <i class="fa-regular ${checkIcon} transition-colors"></i>
                             </button>
                             <div class="flex-1 min-w-0 cursor-pointer" onclick="toggleItem('${item.id}')">
                                 <div class="flex flex-wrap items-center gap-2 mb-0.5">
-                                    <span class="text-sm ${titleStrike} select-none transition-all leading-snug">${item.name}</span>
-                                    <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md border uppercase tracking-wider ${tagStyle}">${item.tag}</span>
+                                    <span class="text-sm ${titleStrike} select-none transition-all leading-snug">${itemName}</span>
+                                    <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md border uppercase tracking-wider ${tagStyle}">${itemTagTrans}</span>
                                 </div>
-                                ${item.desc ? `<p class="text-[11px] ${item.checked ? 'text-slate-400 dark:text-slate-600' : 'text-slate-500 dark:text-slate-400'} leading-relaxed">${item.desc}</p>` : ''}
+                                ${itemDesc ? `<p class="text-[11px] ${item.checked ? 'text-slate-400 dark:text-slate-600' : 'text-slate-500 dark:text-slate-400'} leading-relaxed">${itemDesc}</p>` : ''}
                             </div>
-                            <button onclick="deleteItem('${item.id}')" class="text-slate-300 dark:text-slate-600 hover:text-rose-600 dark:hover:text-rose-400 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors focus:outline-none" title="Padam dari senarai">
+                            <button onclick="deleteItem('${item.id}')" class="text-slate-300 dark:text-slate-600 hover:text-rose-600 dark:hover:text-rose-400 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors focus:outline-none" title="${currentLang === 'bm' ? 'Padam dari senarai' : 'Delete item'}">
                                 <i class="fa-regular fa-trash-can text-sm"></i>
                             </button>
                         </div>
                     `;
                 });
 
+                const countSubText = currentLang === 'bm' ? `${completedInGroup} daripada ${totalInGroup} selesai disimpan` : `${completedInGroup} of ${totalInGroup} items packed`;
+
                 cardWrapper.innerHTML = `
                     <div class="bg-gradient-to-r ${meta.color} p-4 text-white flex justify-between items-center shadow-xs">
                         <div>
-                            <h2 class="font-extrabold text-sm sm:text-base tracking-tight">${meta.title}</h2>
-                            <p class="text-[10px] text-white/95 font-medium">${completedInGroup} daripada ${totalInGroup} selesai disimpan</p>
+                            <h2 class="font-extrabold text-sm sm:text-base tracking-tight">${groupTitle}</h2>
+                            <p class="text-[10px] text-white/95 font-medium">${countSubText}</p>
                         </div>
                         <span class="bg-white/20 dark:bg-slate-900/60 text-white font-bold text-xs px-2.5 py-1 rounded-full backdrop-blur-md border border-white/10 dark:border-slate-800/40">
                             ${progressInGroup}%
@@ -662,19 +1211,156 @@
             });
 
             if (groupsRenderedCount === 0) {
+                const noResultTitle = currentLang === 'bm' ? 'Tiada barangan ditemui' : 'No items found';
+                const noResultDesc = currentLang === 'bm' ? 'Cuba ubah carian anda atau tukar penapis status di atas untuk memaparkan senarai barangan.' : 'Try changing your search terms or adjusting the status filters above.';
+                
                 container.innerHTML = `
                     <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-12 text-center shadow-xs transition-colors duration-300">
                         <div class="bg-slate-100 dark:bg-slate-950 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 dark:text-slate-600">
                             <i class="fa-regular fa-folder-open text-2xl"></i>
                         </div>
-                        <h4 class="font-extrabold text-slate-800 dark:text-slate-200 text-sm sm:text-base mb-1">Tiada barangan ditemui</h4>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto leading-relaxed">Cuba ubah carian anda atau tukar penapis status di atas untuk memaparkan senarai barangan.</p>
+                        <h4 class="font-extrabold text-slate-800 dark:text-slate-200 text-sm sm:text-base mb-1">${noResultTitle}</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto leading-relaxed">${noResultDesc}</p>
                     </div>
                 `;
             }
         }
 
-        // Toggle item check status
+        function renderTips() {
+            const container = document.getElementById('tips-container-wrapper');
+            container.innerHTML = '';
+
+            const tips = {
+                bm: [
+                    {
+                        icon: "fa-circle-exclamation",
+                        color: "text-brand-500",
+                        title: "PENTING SEBELUM LAPOR DIRI",
+                        blocks: [
+                            {
+                                label: "📋 Ikut Garis Panduan Rasmi:",
+                                content: "Semak laman web rasmi atau portal kemasukan institusi anda untuk senarai borang pengesahan, slip yuran, atau kad matrik yang khusus."
+                            },
+                            {
+                                label: "📂 Fotostat Dokumen Asas:",
+                                content: "Sediakan sekurang-kurangnya 3-5 keping salinan dokumen seperti MyKad, SPM/Sijil peperiksaan, surat tawaran, dan sijil kelahiran yang telah disahkan."
+                            },
+                            {
+                                label: "💰 Kewangan & Buku Bank:",
+                                content: "Sediakan salinan penyata akaun bank atas nama sendiri bagi urusan kemasukan elaun, bantuan, zakat, atau pinjaman pendidikan."
+                            }
+                        ]
+                    },
+                    {
+                        icon: "fa-lightbulb",
+                        color: "text-amber-500",
+                        title: "HACKS KEHIDUPAN ASRAMA",
+                        blocks: [
+                            {
+                                label: "👔 Kod Berpakaian Kuliah",
+                                content: "Setiap universiti atau kolej mempunyai undang-undang pakaian akademik. Sediakan pakaian berkolar, bersopan dan kasut bertutup untuk urusan rasmi."
+                            },
+                            {
+                                label: "🔌 Keselamatan Extension Plug",
+                                content: "Bilik asrama biasanya mempunyai bilangan soket palam elektrik yang sedikit. Pastikan membawa extension plug yang diiktiraf demi keselamatan bilik."
+                            },
+                            {
+                                label: "🔑 Keselamatan Mangga Padlock",
+                                content: "Sentiasa bawa kunci mangga berkualiti tinggi berserta kunci pendua (spare key) untuk mengunci loker asrama peribadi anda."
+                            }
+                        ]
+                    }
+                ],
+                en: [
+                    {
+                        icon: "fa-circle-exclamation",
+                        color: "text-brand-500",
+                        title: "IMPORTANT PRE-REGISTRATION TIPS",
+                        blocks: [
+                            {
+                                label: "📋 Follow Official Guidelines:",
+                                content: "Regularly check your institution's official portal for registration forms, fee invoices, medical templates, or dynamic announcements."
+                            },
+                            {
+                                label: "📂 Certify Basic Document Copies:",
+                                content: "Prepare at least 3-5 certified copies of your ID cards, academic transcripts, birth certificates, and official offer letters."
+                            },
+                            {
+                                label: "💰 Banking & Financial Setup:",
+                                content: "Ensure you have a savings account statement registered under your name for allowances, loans, or scholarship payments."
+                            }
+                        ]
+                    },
+                    {
+                        icon: "fa-lightbulb",
+                        color: "text-amber-500",
+                        title: "HOSTEL LIFE SAVER HACKS",
+                        blocks: [
+                            {
+                                label: "👔 Dress Code Regulations",
+                                content: "Most universities enforce official academic dress codes. Prepare formal collared shirts, decent dresses, and closed-toe shoes."
+                            },
+                            {
+                                label: "🔌 Certified Power Strip Strips",
+                                content: "Dorm rooms typically share a few wall outlets. Always bring a certified high-quality power strip to recharge safely."
+                            },
+                            {
+                                label: "🔑 Padlocks & Locker Security",
+                                content: "Always purchase a sturdy padlock along with a backup set of keys to safeguard your valuables inside personal dorm wardrobes."
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            const currentTips = tips[currentLang];
+            currentTips.forEach(tip => {
+                const card = document.createElement('div');
+                card.className = "bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300";
+                
+                let blocksHtml = '';
+                tip.blocks.forEach(block => {
+                    blocksHtml += `
+                        <div class="mb-4 last:mb-0 space-y-1">
+                            <span class="text-[11px] font-extrabold text-brand-600 dark:text-brand-400 uppercase tracking-wider block">${block.label}</span>
+                            <div class="bg-slate-100 dark:bg-slate-950/70 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p>${block.content}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <h3 class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-2 text-xs uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">
+                        <i class="fa-solid ${tip.icon} ${tip.color} text-lg"></i>
+                        <span>${tip.title}</span>
+                    </h3>
+                    ${blocksHtml}
+                `;
+
+                container.appendChild(card);
+            });
+
+            // Aesthetic Quote Card
+            const quoteCard = document.createElement('div');
+            quoteCard.className = "bg-slate-900 text-slate-100 p-6 rounded-2xl text-center relative overflow-hidden shadow-lg transition-colors duration-300";
+            
+            const quoteText = currentLang === 'bm' 
+                ? '"Permulaan kehidupan baru di universiti atau kolej adalah tempoh penting yang akan mencorakkan kerjaya masa depan anda. Nikmati perjalanannya dengan persediaan yang mantap!"'
+                : '"Starting university or college is a pivotal chapter that shapes your future career. Embrace the journey with solid, worry-free preparation!"';
+
+            quoteCard.innerHTML = `
+                <div class="absolute -top-10 -right-10 w-24 h-24 bg-brand-500/20 rounded-full blur-xl"></div>
+                <i class="fa-solid fa-quote-left text-3xl text-brand-500/40 block mb-2"></i>
+                <p class="text-xs italic text-slate-300 leading-relaxed">${quoteText}</p>
+                <div class="mt-4 text-[10px] font-bold tracking-widest text-brand-400 uppercase">
+                    U-PREP Global Team
+                </div>
+            `;
+            container.appendChild(quoteCard);
+        }
+
+        // Toggle item status
         function toggleItem(id) {
             const item = items.find(i => i.id === id);
             if (item) {
@@ -682,12 +1368,13 @@
                 saveData();
                 renderChecklist();
                 if (item.checked) {
-                    showToast(`Selesai dibungkus: ${item.name}`, 'fa-circle-check', 'text-emerald-400');
+                    const itemName = currentLang === 'bm' ? (item.name_bm || item.name_en) : (item.name_en || item.name_bm);
+                    showToast(`${uiDict[currentLang].toast_checked}: ${itemName}`, 'fa-circle-check', 'text-emerald-400');
                 }
             }
         }
 
-        // Add custom student item
+        // Add custom item
         function addCustomItem() {
             const nameInput = document.getElementById('custom-item-name');
             const categorySelect = document.getElementById('custom-item-category');
@@ -700,7 +1387,7 @@
             const tag = tagInput ? tagInput.value : 'Wajib';
 
             if (!name) {
-                showToast('Masukkan nama barang anda!', 'fa-circle-exclamation', 'text-amber-500');
+                showToast(uiDict[currentLang].toast_warn_empty, 'fa-circle-exclamation', 'text-amber-500');
                 return;
             }
 
@@ -708,10 +1395,12 @@
                 id: 'custom-' + Date.now(),
                 category: category,
                 packingLocation: location,
-                name: name,
+                name_bm: name,
+                name_en: name,
                 checked: false,
                 tag: tag,
-                desc: 'Barangan kustom peribadi anda.'
+                desc_bm: 'Barangan kustom peribadi anda.',
+                desc_en: 'Your custom personal item.'
             };
 
             items.push(newItem);
@@ -719,22 +1408,21 @@
             renderChecklist();
             
             nameInput.value = '';
-            showToast(`Berjaya ditambah: ${name}`, 'fa-circle-plus', 'text-brand-500');
+            showToast(`${uiDict[currentLang].toast_added}: ${name}`, 'fa-circle-plus', 'text-brand-500');
         }
 
-        // Delete any checklist item
+        // Delete item
         function deleteItem(id) {
             const index = items.findIndex(i => i.id === id);
             if (index > -1) {
-                const name = items[index].name;
+                const name = currentLang === 'bm' ? (items[index].name_bm || items[index].name_en) : (items[index].name_en || items[index].name_bm);
                 items.splice(index, 1);
                 saveData();
                 renderChecklist();
-                showToast(`Dipadam: ${name}`, 'fa-circle-minus', 'text-rose-500');
+                showToast(`${uiDict[currentLang].toast_deleted}: ${name}`, 'fa-regular fa-trash-can', 'text-rose-500');
             }
         }
 
-        // Set state filter
         function setStatusFilter(filterType) {
             currentFilter = filterType;
             
@@ -755,15 +1443,14 @@
             renderChecklist();
         }
 
-        // Reset completely to defaults
+        // Reset completely
         function resetAllChecklist() {
             items = defaultChecklist.map(i => ({...i, checked: false}));
             saveData();
             renderChecklist();
-            showToast('Semua senarai dibersihkan!', 'fa-rotate-left', 'text-brand-500');
+            showToast(uiDict[currentLang].toast_reset, 'fa-rotate-left', 'text-brand-500');
         }
 
-        // Re-calculate the progress bar
         function updateProgress() {
             const total = items.length;
             const completed = items.filter(i => i.checked).length;
@@ -775,25 +1462,27 @@
             document.getElementById('total-count').innerText = total;
 
             const msgEl = document.getElementById('packing-status-message');
+            const dict = uiDict[currentLang];
+            
             if (percentage === 0) {
-                msgEl.innerText = "Mari mulakan mengemas! 🚀";
+                msgEl.innerText = dict.status_msg_0;
                 msgEl.className = "font-semibold text-slate-300";
             } else if (percentage < 35) {
-                msgEl.innerText = "Sikit-sikit, lama-lama siap! Teruskan. 👍";
+                msgEl.innerText = dict.status_msg_low;
                 msgEl.className = "font-semibold text-amber-500";
             } else if (percentage < 70) {
-                msgEl.innerText = "Separuh jalan dah! Hebat kerja anda. 💪";
+                msgEl.innerText = dict.status_msg_mid;
                 msgEl.className = "font-semibold text-sky-500 dark:text-sky-400";
             } else if (percentage < 100) {
-                msgEl.innerText = "Sikit lagi! Dah nak siap sepenuhnya! 🎒";
+                msgEl.innerText = dict.status_msg_high;
                 msgEl.className = "font-semibold text-brand-600 dark:text-brand-400";
             } else {
-                msgEl.innerText = "Semua siap dibungkus! Selamat melangkah ke Universiti/Kolej! 🎉";
+                msgEl.innerText = dict.status_msg_full;
                 msgEl.className = "font-bold text-emerald-500 dark:text-emerald-400 animate-bounce";
             }
         }
 
-        // Elegant Toast notification logic
+        // Elegant Toast notification
         let toastTimeout;
         function showToast(message, iconClass, colorClass) {
             const toast = document.getElementById('toast');
